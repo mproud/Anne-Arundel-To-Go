@@ -16,8 +16,8 @@ export function Hero() {
 
                     <p className="mt-6 max-w-md text-pretty text-lg leading-relaxed text-md-cream/80">
                         Our restaurants kept us going. Now let&apos;s keep them going. Sign the petition to
-                        permanently allow sealed to-go cocktails from licensed restaurants across Anne Arundel
-                        County and Annapolis.
+                        permanently allow sealed to-go cocktails from licensed restaurants across Annapolis 
+                        and Anne Arundel County.
                     </p>
 
                     <div className="mt-8 flex flex-col gap-3 sm:flex-row">

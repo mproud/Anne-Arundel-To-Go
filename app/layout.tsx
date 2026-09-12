@@ -15,13 +15,13 @@ const oswald = Oswald({
 })
 
 export const metadata: Metadata = {
-    title: 'Anne Arundel To Go | Legalize To-Go Cocktails in Anne Arundel County & Annapolis',
+    title: 'Sign the Petition - Support To Go Cocktails in Annapolis and Anne Arundel County',
     description:
-        'Sign the petition to let Anne Arundel County and Annapolis restaurants sell sealed to-go cocktails. Support local jobs, small businesses, and consumer choice in Maryland.',
+        'Sign the petition to let Anne Arundel County and Annapolis restaurants sell to-go cocktails. Support local jobs, small businesses, and consumer choice in Maryland.',
     openGraph: {
-        title: 'Legalize To-Go Cocktails in Anne Arundel County & Annapolis',
+        title: 'Sign the Petition - Support To Go Cocktails in Annapolis and Anne Arundel County',
         description:
-            'Join the coalition of restaurants, businesses, and residents supporting sealed to-go cocktails across Anne Arundel County and Annapolis, Maryland.',
+            'Join the coalition of restaurants, businesses, and residents supporting to-go cocktails across Anne Arundel County and Annapolis, Maryland.',
         type: 'website',
     },
 }

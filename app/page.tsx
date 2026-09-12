@@ -15,11 +15,11 @@ export default function Page() {
         <main>
             <SiteHeader />
             <Hero />
-            <FactsSection />
-            <PetitionSection />
-            <AboutSection />
             <SupportersSection />
+            <PetitionSection />
+            <FactsSection />
             <FaqSection />
+            <AboutSection />
             <PostersSection />
             <SocialSection />
             <ContactSection />

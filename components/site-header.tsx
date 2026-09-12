@@ -2,10 +2,10 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 
 const navLinks = [
-    { href: '/#facts', label: 'The Facts' },
-    { href: '/#about', label: 'Who We Are' },
     { href: '/#supporters', label: 'Supporters' },
+    { href: '/#facts', label: 'The Facts' },
     { href: '/#faq', label: 'FAQ' },
+    { href: '/#about', label: 'Who We Are' },
     { href: '/#posters', label: 'Toolkit' },
     { href: '/#contact', label: 'Get Involved' },
 ]

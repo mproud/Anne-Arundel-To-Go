@@ -22,7 +22,7 @@ const values = [
 
 export function AboutSection() {
     return (
-        <section id="about" className="bg-background py-20">
+        <section id="about" className="border-t border-border bg-muted py-20">
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
                 <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                     <Reveal className="relative order-last lg:order-first">

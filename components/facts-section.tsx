@@ -35,29 +35,9 @@ const facts = [
         body: 'Proposals pair each cocktail with a food purchase, keeping the focus on full-service restaurants rather than unregulated sales.',
     },
     {
-        icon: Clock,
-        title: 'Reasonable hours',
-        body: 'Sales follow a defined cutoff \u2014 commonly 11:00 p.m. \u2014 so the program stays predictable and easy for restaurants and inspectors to follow.',
-    },
-    {
         icon: TrendingUp,
         title: 'A lifeline that became a favorite',
         body: 'Temporary pandemic-era allowances proved popular with customers and gave restaurants a real revenue stream. Making it permanent protects that progress.',
-    },
-    {
-        icon: DollarSign,
-        title: 'New revenue for thin margins',
-        body: 'Restaurants keep single-digit profit margins. Cocktails carry some of the highest markups on the menu, so to-go drinks add high-value sales without new overhead or square footage.',
-    },
-    {
-        icon: Briefcase,
-        title: 'More shifts for local workers',
-        body: 'Added takeout and delivery volume means more hours for bartenders, servers, and kitchen staff \u2014 and more tips \u2014 in an industry that is still rebuilding its workforce.',
-    },
-    {
-        icon: Store,
-        title: 'Keeps dollars in the neighborhood',
-        body: 'Spending at an independent restaurant recirculates locally far more than a chain purchase. To-go cocktails help family-owned spots compete and stay open on our main streets.',
     },
     {
         icon: Beer,

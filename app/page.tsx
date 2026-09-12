@@ -16,8 +16,8 @@ export default function Page() {
             <SiteHeader />
             <Hero />
             <FactsSection />
-            <AboutSection />
             <PetitionSection />
+            <AboutSection />
             <SupportersSection />
             <FaqSection />
             <PostersSection />

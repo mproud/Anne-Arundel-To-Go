@@ -14,7 +14,7 @@ export function SiteHeader() {
     return (
         <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
             <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-                <Link href="#top" className="flex items-center gap-2.5">
+                <Link href="/#top" className="flex items-center gap-2.5">
                     <span className="font-display text-xl font-bold uppercase tracking-tight text-md-black">
                         Anne Arundel <span className="text-primary">To Go</span>
                     </span>

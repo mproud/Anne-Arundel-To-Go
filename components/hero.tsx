@@ -15,7 +15,7 @@ export function Hero() {
                     </h1>
 
                     <p className="mt-6 max-w-md text-pretty text-lg leading-relaxed text-md-cream/80">
-                        Our restaurants kept us going. Now let&apos;s keep them going. Sign the petition to
+                        @todo Sign the petition to
                         permanently allow sealed to-go cocktails from licensed restaurants across Annapolis 
                         and Anne Arundel County.
                     </p>
@@ -74,7 +74,7 @@ export function Hero() {
                     <div className="relative overflow-hidden rounded-xl ring-1 ring-md-cream/15">
                         <Image
                             src="/images/hero-annapolis.png"
-                            alt="A sealed to-go craft cocktail on a restaurant bar with the Annapolis waterfront and sailboats behind it"
+                            alt="@TODO"
                             width={720}
                             height={720}
                             priority

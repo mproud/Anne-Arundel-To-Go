@@ -1,17 +1,10 @@
 import {
     Beer,
     Utensils,
-    Clock,
     ShieldCheck,
-    Landmark,
-    TrendingUp,
-    DollarSign,
-    Briefcase,
-    Store,
     MapPin,
 } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
-import { CountUp } from '@/components/count-up'
 
 const facts = [
     {
@@ -42,14 +35,17 @@ export function FactsSection() {
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
                 <div className="max-w-2xl">
                     <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-                        Know the facts
+                        Know the Facts
                     </span>
+
                     <h2 className="mt-3 text-balance font-display text-4xl font-bold uppercase tracking-tight text-md-black sm:text-5xl">
                         Simple Rules. Local Benefits.
                     </h2>
+
                     <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-                        To-go cocktails are a straightforward way to give local restaurants more flexibility and customers more choice - 
-                        with clear rules designed around responsible service.
+                        To-go cocktails are a straightforward way to give local restaurants more
+                        flexibility and customers more choice—with clear rules designed around
+                        responsible service.
                     </p>
                 </div>
 
@@ -57,85 +53,50 @@ export function FactsSection() {
                     {facts.map((fact, i) => (
                         <Reveal
                             key={fact.title}
-                            delay={(i % 3) * 90}
+                            delay={(i % 2) * 90}
                             className="flex flex-col gap-4 bg-card p-7"
                         >
                             <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-secondary text-secondary-foreground">
                                 <fact.icon className="h-5 w-5" />
                             </span>
+
                             <h3 className="font-display text-lg font-semibold uppercase tracking-wide text-md-black">
                                 {fact.title}
                             </h3>
-                            <p className="text-sm leading-relaxed text-muted-foreground">{fact.body}</p>
+
+                            <p className="text-sm leading-relaxed text-muted-foreground">
+                                {fact.body}
+                            </p>
                         </Reveal>
                     ))}
                 </div>
 
                 <Reveal className="mt-10 overflow-hidden rounded-xl bg-md-black">
-                    <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-                        <div>
-                            <span className="text-sm font-semibold uppercase tracking-widest text-secondary">
-                                We know how this works.
-                            </span>
-                            <h3 className="mt-3 text-balance font-display text-2xl font-bold uppercase tracking-tight text-md-cream sm:text-3xl">
-                                A small change to rules we already know.
-                            </h3>
-                            <p className="mt-4 text-pretty leading-relaxed text-md-cream/70">
-                                Taking alcohol home from a restaurant isn't new. Customers can already leave with beer and 
-                                wine. Cocktails to go apply that same idea to a sealed drink prepared by the restaurant 
-                                you're already ordering from.<br/>
-                                <br/>
-                                Maryland also allowed the practice temporarily during the pandemic, giving restaurants and 
-                                regulators real-world experience with how it can work responsibly.
+                    <div className="p-8 sm:p-10">
+                        <span className="text-sm font-semibold uppercase tracking-widest text-secondary">
+                            We Know How This Works
+                        </span>
+
+                        <h3 className="mt-3 font-display text-2xl font-bold uppercase tracking-tight text-md-cream sm:text-3xl">
+                            A Small Change to Rules We Already Know.
+                        </h3>
+
+                        <div className="mt-4 space-y-4 text-pretty leading-relaxed text-md-cream/70">
+                            <p>
+                                Taking alcohol home from a restaurant isn&apos;t new. Customers can
+                                already leave with beer and wine. Cocktails to go apply that same
+                                idea to a sealed drink prepared by the restaurant you&apos;re already
+                                ordering from.
+                            </p>
+
+                            <p>
+                                Maryland also allowed the practice temporarily during the pandemic,
+                                giving restaurants and regulators real-world experience with how it
+                                can work responsibly.
                             </p>
                         </div>
-                        <dl className="grid grid-cols-3 gap-4 border-t border-md-cream/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                            <div>
-                                <dd>
-                                    <CountUp
-                                        end={2020}
-                                        separator=""
-                                        className="font-display text-3xl font-bold text-secondary sm:text-4xl"
-                                    />
-                                </dd>
-                                <dt className="mt-1 text-xs uppercase tracking-widest text-md-cream/60">
-                                    Allowed since
-                                </dt>
-                            </div>
-                            <div>
-                                <dd>
-                                    <CountUp
-                                        end={35}
-                                        suffix="+"
-                                        className="font-display text-3xl font-bold text-secondary sm:text-4xl"
-                                    />
-                                </dd>
-                                <dt className="mt-1 text-xs uppercase tracking-widest text-md-cream/60">
-                                    States that adopted it
-                                </dt>
-                            </div>
-                            <div>
-                                <dd>
-                                    <CountUp
-                                        end={79}
-                                        suffix="%"
-                                        className="font-display text-3xl font-bold text-secondary sm:text-4xl"
-                                    />
-                                </dd>
-                                <dt className="mt-1 text-xs uppercase tracking-widest text-md-cream/60">
-                                    Want it made permanent
-                                </dt>
-                            </div>
-                        </dl>
                     </div>
                 </Reveal>
-
-                <p className="mt-6 text-xs text-muted-foreground">
-                    Specific rules such as container standards, food requirements, and sale hours are set by
-                    local regulation and may change. Figures shown are illustrative of national trends;
-                    contact the Anne Arundel County Board of License Commissioners or the Annapolis Alcohol
-                    Beverage Control Board for current details.
-                </p>
             </div>
         </section>
     )

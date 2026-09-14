@@ -32,7 +32,7 @@ export function Hero() {
                             Sign the Petition
                         </a>
                         <a
-                            href="#supporters"
+                            href="/?contact=business#contact"
                             className={buttonVariants({
                                 size: 'lg',
                                 variant: 'secondary',
@@ -40,7 +40,7 @@ export function Hero() {
                                     'h-12 bg-secondary font-display text-base font-semibold uppercase tracking-wide text-secondary-foreground hover:bg-secondary/90',
                             })}
                         >
-                            Join as a Business
+                            Endorse as a Business
                         </a>
                     </div>
 

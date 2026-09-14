@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { FlagStripe } from '@/components/flag-stripe'
 
 export function SiteFooter() {
@@ -7,10 +8,14 @@ export function SiteFooter() {
             <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
                 <div className="flex flex-col items-start justify-between gap-8 sm:flex-row">
                     <div className="max-w-sm">
-                        <div className="flex items-center gap-2.5">
-                            <span className="font-display text-xl font-bold uppercase tracking-tight">
-                                Anne Arundel <span className="text-secondary">To Go</span>
-                            </span>
+                        <div className="inline-flex rounded-lg bg-md-cream px-3 py-2">
+                            <Image
+                                src="/images/anne-arundel-to-go-logo.png"
+                                alt="Anne Arundel To Go"
+                                width={900}
+                                height={521}
+                                className="h-20 w-auto"
+                            />
                         </div>
                         <p className="mt-4 text-sm leading-relaxed text-md-cream/70">
                             A community coalition working to make sealed to-go cocktails permanent in Anne

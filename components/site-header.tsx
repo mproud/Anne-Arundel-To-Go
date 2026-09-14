@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 
@@ -13,11 +14,20 @@ const navLinks = [
 export function SiteHeader() {
     return (
         <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-            <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-                <Link href="/#top" className="flex items-center gap-2.5">
-                    <span className="font-display text-xl font-bold uppercase tracking-tight text-md-black">
-                        Anne Arundel <span className="text-primary">To Go</span>
-                    </span>
+            <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+                <Link
+                    href="/#top"
+                    className="flex shrink-0 items-center"
+                    aria-label="Anne Arundel To Go home"
+                >
+                    <Image
+                        src="/images/anne-arundel-to-go-logo.png"
+                        alt="Anne Arundel To Go"
+                        width={900}
+                        height={521}
+                        priority
+                        className="h-12 w-auto sm:h-14"
+                    />
                 </Link>
 
                 <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
@@ -35,7 +45,7 @@ export function SiteHeader() {
                 <a
                     href="#petition"
                     className={buttonVariants({
-                        className: 'font-display font-semibold uppercase tracking-wide',
+                        className: 'shrink-0 font-display font-semibold uppercase tracking-wide',
                     })}
                 >
                     Sign the Petition

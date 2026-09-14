@@ -118,13 +118,13 @@ export function SupportersSection() {
                         </p>
                     </div>
                     <a
-                        href="#contact"
+                        href="/?contact=business#contact"
                         className={buttonVariants({
                             size: 'lg',
                             className: 'font-display font-semibold uppercase tracking-wide',
                         })}
                     >
-                        Endorse the Campaign
+                        Endorse as a Business
                     </a>
                 </div>
             </div>

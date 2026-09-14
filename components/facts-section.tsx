@@ -15,34 +15,24 @@ import { CountUp } from '@/components/count-up'
 
 const facts = [
     {
-        icon: Landmark,
-        title: 'First a law, then local rules',
-        body: 'The General Assembly must pass a bill authorizing to-go cocktails here. That law then lets the Anne Arundel County and Annapolis liquor boards adopt the regulations to allow it.',
-    },
-    {
-        icon: MapPin,
-        title: 'Maryland neighbors already do it',
-        body: 'Howard County and Baltimore County have already made permanent to-go cocktails legal. Anne Arundel County and Annapolis can follow the same proven path our neighbors have paved.',
+        icon: Beer,
+        title: 'Restaurants Already Offer Alcohol To-Go',
+        body: 'Restaurants can already send customers home with beer and wine. Allowing a sealed cocktail simply adds another option under clear, responsible rules.',
     },
     {
         icon: ShieldCheck,
-        title: 'Sold in sealed, tamper-evident containers',
-        body: 'To-go cocktails travel in secure, sealed containers that must stay closed in transit \u2014 the same responsible standard used successfully in jurisdictions across the country.',
+        title: 'Sealed From Restaurant to Home',
+        body: 'Cocktails to go would be sold in sealed, tamper-evident containers that must remain closed in transit.',
     },
     {
         icon: Utensils,
-        title: 'Tied to a food order',
-        body: 'Proposals pair each cocktail with a food purchase, keeping the focus on full-service restaurants rather than unregulated sales.',
+        title: 'Part of a Restaurant Order',
+        body: 'The proposal can tie cocktails to a food purchase, keeping the focus on restaurants and making the drink an extension of the meal.',
     },
     {
-        icon: TrendingUp,
-        title: 'A lifeline that became a favorite',
-        body: 'Temporary pandemic-era allowances proved popular with customers and gave restaurants a real revenue stream. Making it permanent protects that progress.',
-    },
-    {
-        icon: Beer,
-        title: 'Consumer choice, done responsibly',
-        body: 'Marylanders can already carry out beer and wine. Extending the same convenience to a sealed craft cocktail is a common-sense next step.',
+        icon: MapPin,
+        title: 'Our Maryland Neighbors Already Allow It',
+        body: 'Other Maryland jurisdictions already allow cocktails to go. Anne Arundel County and Annapolis can build on approaches that are already working close to home.',
     },
 ]
 
@@ -55,15 +45,15 @@ export function FactsSection() {
                         Know the facts
                     </span>
                     <h2 className="mt-3 text-balance font-display text-4xl font-bold uppercase tracking-tight text-md-black sm:text-5xl">
-                        Responsible, local, and overdue
+                        Simple Rules. Local Benefits.
                     </h2>
                     <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-                        To-go cocktails are not a free-for-all. They are a carefully regulated way to support
-                        neighborhood restaurants while giving customers the choice they have asked for.
+                        To-go cocktails are a straightforward way to give local restaurants more flexibility and customers more choice - 
+                        with clear rules designed around responsible service.
                     </p>
                 </div>
 
-                <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+                <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
                     {facts.map((fact, i) => (
                         <Reveal
                             key={fact.title}
@@ -85,16 +75,18 @@ export function FactsSection() {
                     <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
                         <div>
                             <span className="text-sm font-semibold uppercase tracking-widest text-secondary">
-                                We already know it works
+                                We know how this works.
                             </span>
                             <h3 className="mt-3 text-balance font-display text-2xl font-bold uppercase tracking-tight text-md-cream sm:text-3xl">
-                                It got us through COVID. Let&apos;s make it permanent.
+                                A small change to rules we already know.
                             </h3>
                             <p className="mt-4 text-pretty leading-relaxed text-md-cream/70">
-                                When dining rooms closed in 2020, Maryland let restaurants sell to-go cocktails to
-                                stay afloat. Customers loved the convenience, restaurants added a much-needed
-                                revenue stream, and there was no wave of problems. The emergency ended &mdash; but
-                                the demand, and the benefits, never did.
+                                Taking alcohol home from a restaurant isn't new. Customers can already leave with beer and 
+                                wine. Cocktails to go apply that same idea to a sealed drink prepared by the restaurant 
+                                you're already ordering from.<br/>
+                                <br/>
+                                Maryland also allowed the practice temporarily during the pandemic, giving restaurants and 
+                                regulators real-world experience with how it can work responsibly.
                             </p>
                         </div>
                         <dl className="grid grid-cols-3 gap-4 border-t border-md-cream/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">

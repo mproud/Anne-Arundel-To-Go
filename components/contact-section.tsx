@@ -32,12 +32,6 @@ export function ContactSection() {
                             </span>
                             <span className="text-sm">hello@annearundeltogo.org</span>
                         </div>
-                        <div className="flex items-center gap-3 text-foreground/85">
-                            <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-secondary text-secondary-foreground">
-                                <MapPin className="h-5 w-5" />
-                            </span>
-                            <span className="text-sm">Serving Anne Arundel County &amp; Annapolis, MD</span>
-                        </div>
                     </div>
 
                     <div className="mt-8 overflow-hidden rounded-xl">

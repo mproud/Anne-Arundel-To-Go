@@ -14,34 +14,21 @@ const groups = [
         icon: Store,
         label: 'Restaurants & Bars',
         members: [
-            'Eastport Kitchen',
-            'Maryland Avenue Tavern',
-            'Severn River Grille',
-            'Dock Street Public House',
-            'Blue Crab Cantina',
-            'West Annapolis Wine Bar',
+            "Adam's Taphouse and Grille",
         ],
     },
     {
         icon: Building2,
         label: 'Businesses & Organizations',
         members: [
-            'Annapolis Restaurant Alliance',
-            'Anne Arundel Hospitality Coalition',
-            'Main Street Merchants Assoc.',
-            'Chesapeake Small Business Network',
-            'Local 21 Service Workers',
+            '',
         ],
     },
     {
         icon: Users,
         label: 'Community Members',
         members: [
-            'Residents of Eastport',
-            'Parole & Edgewater neighbors',
-            'Downtown Annapolis locals',
-            'Severna Park families',
-            'Glen Burnie supporters',
+            '',
         ],
     },
 ]
@@ -58,8 +45,8 @@ export function SupportersSection() {
                         Backed by our neighbors
                     </h2>
                     <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-                        Local restaurants, business groups, and residents across Anne Arundel County and
-                        Annapolis have joined together to make to-go cocktails permanent.
+                        Neighbors, restaurants, and local businesses are coming together to give our restaurants another 
+                        responsible way to serve their customers.
                     </p>
                 </div>
 
@@ -110,7 +97,7 @@ export function SupportersSection() {
                     ))}
                 </div>
 
-                <figure className="mt-10 rounded-xl bg-md-black p-8 text-md-cream sm:p-10">
+                {/* <figure className="mt-10 rounded-xl bg-md-black p-8 text-md-cream sm:p-10">
                     <Quote className="h-8 w-8 text-secondary" aria-hidden />
                     <blockquote className="mt-4 text-balance font-display text-2xl font-medium leading-snug sm:text-3xl">
                         &ldquo;To-go cocktails kept my staff employed when nothing else could. Making them
@@ -119,7 +106,7 @@ export function SupportersSection() {
                     <figcaption className="mt-5 text-sm uppercase tracking-widest text-md-cream/60">
                         Owner, family-run restaurant in Eastport
                     </figcaption>
-                </figure>
+                </figure> */}
 
                 <div className="mt-10 flex flex-col items-center justify-between gap-4 rounded-xl border-2 border-dashed border-primary/40 bg-card p-8 text-center sm:flex-row sm:text-left">
                     <div>

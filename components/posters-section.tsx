@@ -34,8 +34,8 @@ export function PostersSection() {
                         Download &amp; display a poster
                     </h2>
                     <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-                        Print these and post them in your restaurant window, community board, or break room to
-                        help more neighbors find and sign the petition.
+                        Print these and post them in your restaurant window or community board to help more 
+                        neighbors show their support!
                     </p>
                 </div>
 

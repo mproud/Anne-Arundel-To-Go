@@ -16,14 +16,14 @@ export function PetitionSection() {
                         Add your name
                     </span>
                     <h2 className="mt-5 text-balance font-display text-4xl font-bold uppercase leading-tight tracking-tight sm:text-5xl">
-                        Sign the petition for to-go cocktails
+                        Support Cocktails To-Go
                     </h2>
                     <p className="mt-4 max-w-md text-pretty text-lg leading-relaxed text-md-cream/80">
-                        Every signature shows our state lawmakers that Anne Arundel County and Annapolis want
-                        this bill passed. It takes fifteen seconds and makes a real difference.
+                        Add your name to show state lawmakers that Anne Arundel County and Annapolis support giving 
+                        local restaurants the option to sell cocktails to go.
                     </p>
 
-                    <ul className="mt-8 space-y-3 text-sm text-md-cream/85">
+                    {/* <ul className="mt-8 space-y-3 text-sm text-md-cream/85">
                         {[
                             'Your signature is delivered to local decision-makers',
                             'Opt in to campaign updates and hearing alerts',
@@ -34,7 +34,7 @@ export function PetitionSection() {
                                 {item}
                             </li>
                         ))}
-                    </ul>
+                    </ul> */}
                 </div>
 
                 <div className="rounded-2xl bg-card p-6 text-card-foreground shadow-xl ring-1 ring-md-cream/10 sm:p-8">

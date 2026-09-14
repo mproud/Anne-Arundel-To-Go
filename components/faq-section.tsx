@@ -4,23 +4,19 @@ import { Plus } from 'lucide-react'
 const faqs = [
     {
         q: "Won't this hurt liquor stores? They're small businesses too!",
-        a: "We hear this a lot, and we take it seriously \u2014 liquor stores are valued neighbors and local employers. But a single sealed cocktail served alongside a meal isn't the same product a package store sells. You can't stock a party or your home bar from a restaurant to-go order; it's one drink with your dinner, made by the kitchen you're already ordering from. During the pandemic, restaurants and package stores operated with to-go cocktails side by side, and package stores stayed strong. It is already permanent in Howard County and Baltimore County, where liquor stores continue to thrive. This is about restaurants keeping the food-and-drink experience they already offer, not competing with retail.",
+        a: "Liquor stores are important local businesses, and this proposal isn't meant to replace them. A sealed cocktail sold with a restaurant order is fundamentally different from buying bottles, cases, or other alcohol for home. It simply lets a restaurant send a customer home with the drink that would otherwise have been served alongside their meal.",
     },
     {
-        q: 'Is this just alcohol anywhere, anytime?',
-        a: 'No. To-go cocktails are tightly regulated: drinks must be in sealed, tamper-evident containers, are tied to a food order, are limited by the hours in the restaurant\u2019s existing license, and can only be sold by licensed establishments. It is a narrow, common-sense extension of rules that already exist.',
+        q: "Is this just alcohol anywhere, anytime?",
+        a: "No. This would apply only to licensed establishments and would operate under specific rules governing packaging, hours, food requirements, and responsible alcohol service. It's a limited extension of restaurant privileges—not unrestricted alcohol sales.",
     },
     {
-        q: 'What about drunk driving and open containers?',
-        a: 'Sealed, tamper-evident packaging is treated like any other closed container \u2014 it travels in the trunk or back of the vehicle, not open in the cupholder. Existing open-container and DUI laws stay fully in force. Nothing here changes the rules of the road.',
+        q: "What about drunk driving and open containers?",
+        a: "Nothing about this proposal changes Maryland’s DUI or open-container laws. Cocktails would have to remain sealed in transit, just like other alcohol being taken home. The rules of the road stay exactly the same.",
     },
     {
-        q: "Didn't we already have this during COVID?",
-        a: 'Yes \u2014 and it worked. Maryland allowed to-go cocktails as a temporary emergency measure during the pandemic. Customers loved it, restaurants gained a real revenue stream, and there was no wave of problems. That authorization expired a few years ago, so today it is no longer allowed. Our goal is simply to bring that proven success back \u2014 permanently \u2014 for Anne Arundel County and Annapolis.',
-    },
-    {
-        q: 'How does this actually become legal, and how can I help?',
-        a: 'It takes two steps. First, the Maryland General Assembly has to pass a bill authorizing to-go cocktails in our area. Once that law is in place, it permits the Anne Arundel County Board of License Commissioners and the Annapolis Alcohol Beverage Control Board to adopt the specific regulations \u2014 container standards, hours, food requirements \u2014 that make it work. The most powerful thing you can do is sign the petition and share it, so our state lawmakers see how much local demand there is to pass the bill.',
+        q: "How does this actually become legal, and how can I help?",
+        a: "First, the state has to give Anne Arundel County and Annapolis the green light. Then our local licensing boards can decide the details, like how cocktails are packaged, when they can be sold, and what restaurants have to do to participate. Signing the petition helps show lawmakers that people here want that option.",
     },
 ]
 
@@ -30,14 +26,14 @@ export function FaqSection() {
             <div className="mx-auto max-w-3xl px-4 sm:px-6">
                 <div className="max-w-2xl">
                     <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-                        Questions & answers
+                        The Details
                     </span>
                     <h2 className="mt-3 text-balance font-display text-4xl font-bold uppercase tracking-tight text-md-black sm:text-5xl">
-                        Fair questions, straight answers
+                        Fair Questions, Straight Answers.
                     </h2>
                     <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-                        To-go cocktails work best when they work for everyone &mdash; restaurants, retailers,
-                        and residents alike. Here is how we think about the concerns we hear most.
+                        A change like this should work for restaurants, retailers, customers, and the broader 
+                        community. Here are straightforward answers to some of the questions we hear most.
                     </p>
                 </div>
 

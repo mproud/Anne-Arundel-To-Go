@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Check, Copy, Download, MessageCircle, Send, Share2 } from 'lucide-react'
 
-const CAMPAIGN_URL = 'https://annearundeltogo.org'
+const CAMPAIGN_URL = 'https://annearundeltogo.com'
 
 const posts = [
     {

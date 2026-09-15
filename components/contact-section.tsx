@@ -82,7 +82,7 @@ export function ContactSection() {
                             <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-secondary text-secondary-foreground">
                                 <Mail className="h-5 w-5" />
                             </span>
-                            <span className="text-sm">hello@annearundeltogo.org</span>
+                            <span className="text-sm">hello@annearundeltogo.com</span>
                         </div>
                     </div>
 

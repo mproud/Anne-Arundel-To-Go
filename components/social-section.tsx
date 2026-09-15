@@ -3,8 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { Check, Copy, Download, MessageCircle, Send, Share2 } from 'lucide-react'
-
-const CAMPAIGN_URL = 'https://annearundeltogo.com'
+import { SITE_URL } from '@/lib/site'
 
 const posts = [
     {
@@ -41,7 +40,7 @@ export function SocialSection() {
 
     const copy = async (id: string, text: string) => {
         try {
-            await navigator.clipboard.writeText(`${text} ${CAMPAIGN_URL}`)
+            await navigator.clipboard.writeText(`${text} ${SITE_URL}`)
             setCopiedId(id)
             setTimeout(() => setCopiedId(null), 2000)
         } catch {
@@ -90,7 +89,7 @@ export function SocialSection() {
                                         )}
                                     </button>
                                     <a
-                                        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.text)}&url=${encodeURIComponent(CAMPAIGN_URL)}`}
+                                        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.text)}&url=${encodeURIComponent(SITE_URL)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-md-black transition-colors hover:bg-secondary"
@@ -99,7 +98,7 @@ export function SocialSection() {
                                         <Send className="h-4 w-4" />
                                     </a>
                                     <a
-                                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(CAMPAIGN_URL)}&quote=${encodeURIComponent(post.text)}`}
+                                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SITE_URL)}&quote=${encodeURIComponent(post.text)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-md-black transition-colors hover:bg-secondary"

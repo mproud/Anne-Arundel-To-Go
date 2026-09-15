@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     title: 'Thank You for Signing | Anne Arundel To Go',
     description:
         'Thanks for supporting to-go cocktails in Anne Arundel County and Annapolis. Share the campaign and grab a poster to spread the word.',
+    robots: {
+        index: false,
+        follow: false,
+        noarchive: true,
+    },
 }
 
 const nextSteps = [

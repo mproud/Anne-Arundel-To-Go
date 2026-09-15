@@ -9,10 +9,73 @@ import { PostersSection } from '@/components/posters-section'
 import { SocialSection } from '@/components/social-section'
 import { ContactSection } from '@/components/contact-section'
 import { SiteFooter } from '@/components/site-footer'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site'
+
+const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Organization',
+            '@id': `${SITE_URL}/#organization`,
+            name: SITE_NAME,
+            url: SITE_URL,
+            logo: {
+                '@type': 'ImageObject',
+                url: `${SITE_URL}/images/anne-arundel-to-go-logo.png`,
+            },
+            description: SITE_DESCRIPTION,
+            founder: {
+                '@type': 'Person',
+                name: 'Matt Proud',
+            },
+            areaServed: [
+                {
+                    '@type': 'AdministrativeArea',
+                    name: 'Anne Arundel County, Maryland',
+                },
+                {
+                    '@type': 'City',
+                    name: 'Annapolis, Maryland',
+                },
+            ],
+        },
+        {
+            '@type': 'WebSite',
+            '@id': `${SITE_URL}/#website`,
+            url: SITE_URL,
+            name: SITE_NAME,
+            description: SITE_DESCRIPTION,
+            inLanguage: 'en-US',
+            publisher: {
+                '@id': `${SITE_URL}/#organization`,
+            },
+        },
+        {
+            '@type': 'WebPage',
+            '@id': `${SITE_URL}/#webpage`,
+            url: SITE_URL,
+            name: SITE_NAME,
+            description: SITE_DESCRIPTION,
+            isPartOf: {
+                '@id': `${SITE_URL}/#website`,
+            },
+            about: {
+                '@id': `${SITE_URL}/#organization`,
+            },
+            inLanguage: 'en-US',
+        },
+    ],
+}
 
 export default function Page() {
     return (
         <main>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+                }}
+            />
             <SiteHeader />
             <Hero />
             <SupportersSection />

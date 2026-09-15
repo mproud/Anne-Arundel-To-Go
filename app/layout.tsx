@@ -1,5 +1,14 @@
 import type { Metadata, Viewport } from 'next'
 import { Oswald, Public_Sans } from 'next/font/google'
+import {
+    SITE_DESCRIPTION,
+    SITE_NAME,
+    SITE_OG_DESCRIPTION,
+    SITE_OG_IMAGE,
+    SITE_OG_TITLE,
+    SITE_TITLE,
+    SITE_URL,
+} from '@/lib/site'
 import './globals.css'
 
 const publicSans = Public_Sans({
@@ -15,20 +24,19 @@ const oswald = Oswald({
 })
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://annearundeltogo.com'),
+    metadataBase: new URL(SITE_URL),
 
     title: {
-        default: 'Sign the Petition - Support To Go Cocktails in Annapolis and Anne Arundel County',
-        template: '%s | Anne Arundel To Go',
+        default: SITE_TITLE,
+        template: `%s | ${SITE_NAME}`,
     },
 
-    description:
-        'Join neighbors, restaurants, and local businesses supporting cocktails to go in Anne Arundel County and Annapolis. Add your name to the petition.',
-
-    applicationName: 'Anne Arundel To Go',
-
-    creator: 'Anne Arundel To Go',
-    publisher: 'Anne Arundel To Go',
+    description: SITE_DESCRIPTION,
+    applicationName: SITE_NAME,
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    category: 'Community advocacy',
+    referrer: 'origin-when-cross-origin',
 
     keywords: [
         'Anne Arundel County',
@@ -36,6 +44,7 @@ export const metadata: Metadata = {
         'cocktails to go',
         'to-go cocktails',
         'Maryland restaurants',
+        'local restaurants',
         'Anne Arundel To Go',
     ],
 
@@ -46,16 +55,16 @@ export const metadata: Metadata = {
     openGraph: {
         type: 'website',
         url: '/',
-        siteName: 'Anne Arundel To Go',
+        siteName: SITE_NAME,
         locale: 'en_US',
-        title: 'Let Anne Arundel Take It To-Go',
-        description:
-            'Restaurants can already send customers home with beer and wine. Join the coalition supporting sealed cocktails to go in Anne Arundel County and Annapolis.',
+        title: SITE_OG_TITLE,
+        description: SITE_OG_DESCRIPTION,
         images: [
             {
-                url: '/images/anne-arundel-to-go-og.jpg',
+                url: SITE_OG_IMAGE,
                 width: 1200,
                 height: 630,
+                type: 'image/jpeg',
                 alt: 'Anne Arundel To Go — Let Anne Arundel Take It To-Go',
             },
         ],
@@ -63,17 +72,29 @@ export const metadata: Metadata = {
 
     twitter: {
         card: 'summary_large_image',
-        title: 'Let Anne Arundel Take It To-Go',
-        description:
-            'Join neighbors, restaurants, and local businesses supporting sealed cocktails to go in Anne Arundel County and Annapolis.',
-        images: ['/images/anne-arundel-to-go-og.jpg'],
+        title: SITE_OG_TITLE,
+        description: SITE_OG_DESCRIPTION,
+        images: [SITE_OG_IMAGE],
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+            'max-video-preview': -1,
+        },
     },
 
     icons: {
         icon: [
-            { url: '/favicon.ico' },
+            { url: '/favicon.ico', sizes: 'any' },
             { url: '/icon-32.png', sizes: '32x32', type: 'image/png' },
             { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+            { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
         ],
         apple: [
             {
@@ -84,7 +105,19 @@ export const metadata: Metadata = {
         ],
     },
 
-    manifest: '/site.webmanifest',
+    manifest: '/manifest.webmanifest',
+
+    appleWebApp: {
+        capable: true,
+        title: SITE_NAME,
+        statusBarStyle: 'default',
+    },
+
+    formatDetection: {
+        telephone: false,
+        address: false,
+        email: false,
+    },
 }
 
 export const viewport: Viewport = {
@@ -99,9 +132,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`bg-background ${publicSans.variable} ${oswald.variable}`}>
-            <body className="font-sans antialiased">
-                {children}
-            </body>
+            <body className="font-sans antialiased">{children}</body>
         </html>
     )
 }

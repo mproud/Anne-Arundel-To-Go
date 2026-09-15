@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { buttonVariants } from '@/components/ui/button'
 import { FlagStripe } from '@/components/flag-stripe'
 import { CountUp } from '@/components/count-up'
-import { MapPin, PenLine } from 'lucide-react'
+import { PenLine } from 'lucide-react'
 
 export function Hero() {
     return (
@@ -74,7 +74,7 @@ export function Hero() {
                     <div className="relative overflow-hidden rounded-xl ring-1 ring-md-cream/15">
                         <Image
                             src="/images/hero-annapolis.png"
-                            alt="@TODO"
+                            alt="Sealed cocktail overlooking the Annapolis waterfront"
                             width={720}
                             height={720}
                             priority

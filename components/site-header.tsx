@@ -45,7 +45,7 @@ export function SiteHeader() {
                 <a
                     href="#petition"
                     className={buttonVariants({
-                        className: 'shrink-0 font-display font-semibold uppercase tracking-wide',
+                        className: 'shrink-0 h-12 px-8 text-lg font-display font-bold uppercase tracking-wide',
                     })}
                 >
                     Sign the Petition

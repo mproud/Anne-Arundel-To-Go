@@ -11,7 +11,7 @@ export function AboutSection() {
                         </span>
 
                         <h2 className="mt-3 text-balance font-display text-4xl font-bold uppercase tracking-tight text-md-black sm:text-5xl lg:text-6xl">
-                            From One Neighbor to a Growing Coalition.
+                            How This Got Started
                         </h2>
 
                         <div className="mt-8 space-y-5 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">

@@ -4,19 +4,43 @@ import { Plus } from 'lucide-react'
 const faqs = [
     {
         q: "Won't this hurt liquor stores? They're small businesses too!",
-        a: "Liquor stores are important local businesses, and this proposal isn't meant to replace them. A sealed cocktail sold with a restaurant order is fundamentally different from buying bottles, cases, or other alcohol for home. It simply lets a restaurant send a customer home with the drink that would otherwise have been served alongside their meal.",
+        a: (
+            <>
+                Liquor stores are important local businesses, and this proposal isn't meant to replace them. 
+                The proposal concerns sealed cocktails prepared by restaurants for takeout. It doesn't change 
+                where customers can buy bottles of beer, wine, or liquor; it simply lets a restaurant send a 
+                customer home with the drink that would otherwise have been served alongside their meal.
+            </>
+        ),
     },
     {
         q: "Is this just alcohol anywhere, anytime?",
-        a: "No. This would apply only to licensed establishments and would operate under specific rules governing packaging, hours, food requirements, and responsible alcohol service. It's a limited extension of restaurant privileges—not unrestricted alcohol sales.",
+        a: (
+            <>
+                No. This would apply only to licensed establishments and would operate under specific rules governing 
+                packaging, hours, food requirements, and responsible alcohol service. It's a limited extension of 
+                restaurant privileges, not unrestricted alcohol sales.
+            </>
+        ),
     },
     {
         q: "What about drunk driving and open containers?",
-        a: "Nothing about this proposal changes Maryland’s DUI or open-container laws. Cocktails would have to remain sealed in transit, just like other alcohol being taken home. The rules of the road stay exactly the same.",
+        a: (
+            <>
+                Nothing about this proposal changes Maryland's DUI or open-container laws. Cocktails would have to remain 
+                sealed in transit, just like other alcohol being taken home. The rules of the road stay exactly the same.
+            </>
+        ),
     },
     {
         q: "How does this actually become legal, and how can I help?",
-        a: "First, the state has to give Anne Arundel County and Annapolis the green light. Then our local licensing boards can decide the details, like how cocktails are packaged, when they can be sold, and what restaurants have to do to participate. Signing the petition helps show lawmakers that people here want that option.",
+        a: (
+            <>
+                First, the state has to give Anne Arundel County and Annapolis the green light. Then our local licensing 
+                boards can decide the details, like how cocktails are packaged, when they can be sold, and what restaurants 
+                have to do to participate. Signing the petition helps show lawmakers that people here want that option.
+            </>
+        ),
     },
 ]
 

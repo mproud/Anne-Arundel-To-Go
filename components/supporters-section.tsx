@@ -28,7 +28,7 @@ export function SupportersSection() {
     return (
         <section id="supporters" aria-labelledby="supporters-heading" className="bg-md-cream py-20">
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
-                <div className="max-w-2xl">
+                <div className="max-w-4xl">
                     <span className="text-sm font-semibold uppercase tracking-widest text-primary">The coalition</span>
                     <h2 id="supporters-heading" className="mt-3 text-balance font-display text-4xl font-bold uppercase tracking-tight text-md-black sm:text-5xl">
                         Backed by our neighbors

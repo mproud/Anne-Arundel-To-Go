@@ -236,7 +236,7 @@ export function PetitionSection() {
                                   : 'Add my signature'}
                         </Button>
                         <p className="text-center text-xs leading-relaxed text-muted-foreground">
-                            Sorry, this petition is only open to Marylanders 21+. Don't sign if you're underage.
+                            This petition is only open to Marylanders 21+. Don't sign if you're underage.
                         </p>
                     </form>
                 </div>

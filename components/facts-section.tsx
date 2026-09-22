@@ -13,9 +13,9 @@ const facts = [
         body: 'Restaurants can already send customers home with beer and wine. Allowing a cocktail simply adds another option under clear rules.',
     },
     {
-        icon: ShieldCheck,
-        title: 'Sealed From Restaurant to Home',
-        body: 'Cocktails to go would be sold in containers that must remain closed in transit.',
+        icon: MapPin,
+        title: 'Our Maryland Neighbors Already Allow It',
+        body: 'Other Maryland jurisdictions already allow cocktails to go. Anne Arundel County and Annapolis can build on approaches that are already working close to home.',
     },
     {
         icon: Utensils,
@@ -23,9 +23,9 @@ const facts = [
         body: 'The proposal can tie cocktails to a food purchase, keeping the focus on restaurants and making the drink an extension of the meal.',
     },
     {
-        icon: MapPin,
-        title: 'Our Maryland Neighbors Already Allow It',
-        body: 'Other Maryland jurisdictions already allow cocktails to go. Anne Arundel County and Annapolis can build on approaches that are already working close to home.',
+        icon: ShieldCheck,
+        title: 'Sealed From Restaurant to Home',
+        body: 'Cocktails to go would be sold in containers that must remain closed in transit.',
     },
 ]
 

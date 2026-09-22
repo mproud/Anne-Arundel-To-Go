@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { PostersSection } from '@/components/posters-section'
 import { SocialSection } from '@/components/social-section'
 import { FlagStripe } from '@/components/flag-stripe'
 import { buttonVariants } from '@/components/ui/button'
@@ -60,6 +61,7 @@ export default async function ThankYouPage({
                     </div>
                 </section>
                 <SocialSection />
+                <PostersSection />
             </main>
             <SiteFooter />
         </>

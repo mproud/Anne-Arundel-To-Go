@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Anne Arundel To Go poster preview</title>
+  <desc id="desc">Decorative branded poster-style graphic</desc>
+  <rect width="900" height="1200" fill="#f8f4ed"/>
+  <rect x="25" y="25" width="850" height="1150" rx="8" fill="none" stroke="#211f1c" stroke-width="12"/>
+  <rect x="50" y="50" width="800" height="88" fill="#c3213d"/>
+  <rect x="50" y="138" width="800" height="16" fill="#dfb04b"/>
+  <g fill="#211f1c" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800">
+    <text x="450" y="290" font-size="68" letter-spacing="3">ANNE ARUNDEL</text>
+    <text x="450" y="374" font-size="98" letter-spacing="5">TO GO</text>
+  </g>
+  <path d="M315 485h270l-35 340a95 95 0 0 1-95 86h-10a95 95 0 0 1-95-86z" fill="#e9a13c" stroke="#211f1c" stroke-width="13" stroke-linejoin="round"/>
+  <path d="M334 555h232" stroke="#f8f4ed" stroke-width="24" stroke-linecap="round"/>
+  <path d="M380 460l145-95" stroke="#211f1c" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="548" cy="488" r="68" fill="#f8f4ed" stroke="#c3213d" stroke-width="14"/>
+  <circle cx="548" cy="488" r="42" fill="#e9a13c" stroke="#f8f4ed" stroke-width="8"/>
+  <path d="M548 446v84m-42-42h84m-73-29 62 59m0-59-62 59" stroke="#f8f4ed" stroke-width="5"/>
+  <path d="M345 928h210" stroke="#211f1c" stroke-width="12" stroke-linecap="round"/>
+  <g fill="#211f1c" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">
+    <text x="450" y="1025" font-size="29" font-weight="700" letter-spacing="3">ANNE ARUNDEL COUNTY · ANNAPOLIS</text>
+    <text x="450" y="1088" font-size="30" letter-spacing="1">annearundeltogo.com</text>
+  </g>
+  <rect x="50" y="1122" width="800" height="28" fill="#dfb04b"/>
+  <rect x="50" y="1122" width="400" height="28" fill="#c3213d"/>
+</svg>

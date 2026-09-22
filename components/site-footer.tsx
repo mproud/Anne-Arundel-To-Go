@@ -20,7 +20,7 @@ export function SiteFooter() {
                     <nav className="flex flex-col gap-2.5 text-sm" aria-label="Footer navigation">
                         <a href="/#facts" className="text-md-cream/70 transition-colors hover:text-secondary">The Facts</a>
                         <a href="/#supporters" className="text-md-cream/70 transition-colors hover:text-secondary">Supporters</a>
-                        <a href="/#social" className="text-md-cream/70 transition-colors hover:text-secondary">Share &amp; Toolkit</a>
+                        <a href="/#posters" className="text-md-cream/70 transition-colors hover:text-secondary">Toolkit</a>
                         <a href="/#petition" className="text-md-cream/70 transition-colors hover:text-secondary">Sign the Petition</a>
                         <a href="/#contact" className="text-md-cream/70 transition-colors hover:text-secondary">Contact</a>
                         <Link href="/privacy" className="text-md-cream/70 transition-colors hover:text-secondary">Privacy</Link>

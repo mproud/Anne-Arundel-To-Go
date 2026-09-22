@@ -5,6 +5,7 @@ import { AboutSection } from '@/components/about-section'
 import { PetitionSection } from '@/components/petition-section'
 import { SupportersSection } from '@/components/supporters-section'
 import { FaqSection } from '@/components/faq-section'
+import { PostersSection } from '@/components/posters-section'
 import { SocialSection } from '@/components/social-section'
 import { ContactSection } from '@/components/contact-section'
 import { SiteFooter } from '@/components/site-footer'
@@ -70,6 +71,7 @@ export default function Page() {
                 <FactsSection />
                 <FaqSection />
                 <AboutSection />
+                <PostersSection />
                 <SocialSection />
                 <ContactSection />
             </main>

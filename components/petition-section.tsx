@@ -99,10 +99,7 @@ export function PetitionSection() {
                         Support Cocktails To-Go
                     </h2>
                     <p className="mt-4 max-w-md text-pretty text-lg leading-relaxed text-md-cream/80">
-                        Add your name—or your business or organization—to show support for giving local restaurants the option to sell sealed cocktails to go.
-                    </p>
-                    <p className="mt-5 max-w-md text-sm leading-relaxed text-md-cream/65">
-                        Individual signatures are not displayed publicly. Businesses and organizations can separately choose whether their name may appear on the public supporters list.
+                        Add your name—or your business or organization—to show support for giving local restaurants the option to sell cocktails to go.
                     </p>
                 </div>
 
@@ -112,7 +109,6 @@ export function PetitionSection() {
                             <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
                                 I support to-go cocktails
                             </h3>
-                            <p className="mt-1 text-sm text-muted-foreground">Choose how you are adding your support.</p>
                         </div>
 
                         <fieldset>
@@ -129,7 +125,7 @@ export function PetitionSection() {
                                 <SupporterTypeOption
                                     value="business"
                                     label="A business or organization"
-                                    description="Add organizational support"
+                                    description="Sign on behalf of a business"
                                     icon={Building2}
                                     selected={form.supporterType === 'business'}
                                     onSelect={() => setSupporterType('business')}
@@ -232,7 +228,7 @@ export function PetitionSection() {
                             {isSubmitting
                                 ? 'Submitting…'
                                 : form.supporterType === 'business'
-                                  ? 'Add organization support'
+                                  ? 'Add my business'
                                   : 'Add my signature'}
                         </Button>
                         <p className="text-center text-xs leading-relaxed text-muted-foreground">

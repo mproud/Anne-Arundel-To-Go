@@ -43,8 +43,8 @@ export default async function ThankYouPage({
                         </h1>
                         <p className="mx-auto mt-4 max-w-xl text-pretty text-lg leading-relaxed text-md-cream/80">
                             {isBusiness
-                                ? 'Your business or organization support was submitted successfully. You can help more people learn about the proposal by sharing the site.'
-                                : 'Your signature was submitted successfully. You can help more people learn about the proposal by sharing the site.'}
+                                ? 'Thanks for adding your business or organization to the coalition!'
+                                : 'Thanks for signing the petition!'}
                         </p>
                         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                             <a href="#social" className={buttonVariants({ size: 'lg', className: 'h-11 px-5 font-display font-semibold uppercase tracking-wide' })}>

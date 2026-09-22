@@ -384,17 +384,10 @@ export function SocialSection() {
                 ------------------------------------------- */}
 
                 <div className="mx-auto mt-14 max-w-4xl">
-
                     <div className="mb-6 text-center">
-
                         <h3 className="font-display text-xl font-bold uppercase text-md-black">
                             Grab a Graphic
                         </h3>
-
-                        <p className="mt-1 text-sm text-muted-foreground">
-                            Choose a format for your post or story.
-                        </p>
-
                     </div>
 
                     <div className="grid items-start gap-5 sm:grid-cols-2">

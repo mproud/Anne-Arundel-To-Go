@@ -76,7 +76,7 @@ export function ContactSection() {
                         Contact the coalition
                     </h2>
                     <p className="mt-4 max-w-md text-pretty text-lg leading-relaxed text-muted-foreground">
-                        Have a question or want to help? Send us a note. Businesses and organizations can add their support directly through the petition above.
+                        Have a question or want to get involved? We'd love to hear from you.
                     </p>
 
                     <div className="mt-8">
@@ -101,7 +101,7 @@ export function ContactSection() {
                             </span>
                             <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">Message sent</h3>
                             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-                                Thanks for reaching out. Your message was sent to the coalition.
+                                Thanks for reaching out! We'll be in touch.
                             </p>
                             <Button variant="outline" onClick={() => setSubmitted(false)}>Send another</Button>
                         </div>

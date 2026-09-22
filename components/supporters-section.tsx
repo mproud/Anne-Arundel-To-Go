@@ -34,7 +34,8 @@ export function SupportersSection() {
                         Backed by our neighbors
                     </h2>
                     <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-                        Neighbors, restaurants, and local organizations are adding their names in support. Public business and organization supporters are listed here only when they have given permission to be displayed.
+                        Our coalition brings together neighbors, restaurants, and local businesses
+                        from across Anne Arundel County and Annapolis.
                     </p>
                 </div>
 
@@ -72,7 +73,9 @@ export function SupportersSection() {
                                     ))}
                                 </ul>
                             ) : (
-                                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">Additional public supporters will be listed here as they opt in.</p>
+                                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                                    We're still building the coalition. We'll add more names soon!
+                                </p>
                             )}
                         </Reveal>
                     ))}
@@ -81,7 +84,9 @@ export function SupportersSection() {
                 <div className="mt-10 flex flex-col items-center justify-between gap-4 rounded-xl border-2 border-dashed border-primary/40 bg-card p-8 text-center sm:flex-row sm:text-left">
                     <div>
                         <h3 className="font-display text-xl font-bold uppercase tracking-wide text-md-black">Represent a business or group?</h3>
-                        <p className="mt-1 text-sm text-muted-foreground">Add your organization&apos;s support through the same petition used by individual supporters.</p>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                            Own a business or represent a local organization? Add your name to the coalition.
+                        </p>
                     </div>
                     <a href="/?supporter=business#petition" className={buttonVariants({ size: 'lg', className: 'h-11 px-5 font-display font-semibold uppercase tracking-wide' })}>
                         Support as a Business

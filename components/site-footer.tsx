@@ -18,7 +18,7 @@ export function SiteFooter() {
                             />
                         </div>
                         <p className="mt-4 text-sm leading-relaxed text-md-cream/70">
-                            A community coalition working to make sealed to-go cocktails permanent in Anne
+                            A community coalition working to make to-go cocktails permanent in Anne
                             Arundel County and Annapolis, Maryland.
                         </p>
                     </div>
@@ -46,7 +46,7 @@ export function SiteFooter() {
                 </div>
 
                 <div className="mt-10 flex flex-col gap-2 border-t border-md-cream/15 pt-6 text-xs text-md-cream/50 sm:flex-row sm:items-center sm:justify-between">
-                    <p>&copy; {new Date().getFullYear()} Anne Arundel To Go. A grassroots advocacy campaign.</p>
+                    <p>&copy; {new Date().getFullYear()} Anne Arundel To Go</p>
                     <p>Not affiliated with any government agency. Please drink responsibly.</p>
                 </div>
             </div>

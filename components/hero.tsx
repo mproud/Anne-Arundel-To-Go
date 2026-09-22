@@ -70,11 +70,10 @@ export function Hero() {
                 </div>
 
                 <div className="relative">
-                    {/* There was a flag mark here */}
                     <div className="relative overflow-hidden rounded-xl ring-1 ring-md-cream/15">
                         <Image
-                            src="/images/hero-annapolis.png"
-                            alt="Sealed cocktail overlooking the Annapolis waterfront"
+                            src="/images/orange-crush.png"
+                            alt=""
                             width={720}
                             height={720}
                             priority

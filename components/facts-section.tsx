@@ -10,12 +10,12 @@ const facts = [
     {
         icon: Beer,
         title: 'Restaurants Already Offer Alcohol To-Go',
-        body: 'Restaurants can already send customers home with beer and wine. Allowing a sealed cocktail simply adds another option under clear, responsible rules.',
+        body: 'Restaurants can already send customers home with beer and wine. Allowing a cocktail simply adds another option under clear rules.',
     },
     {
         icon: ShieldCheck,
         title: 'Sealed From Restaurant to Home',
-        body: 'Cocktails to go would be sold in sealed, tamper-evident containers that must remain closed in transit.',
+        body: 'Cocktails to go would be sold in containers that must remain closed in transit.',
     },
     {
         icon: Utensils,
@@ -33,7 +33,7 @@ export function FactsSection() {
     return (
         <section id="facts" className="bg-background py-20">
             <div className="mx-auto max-w-6xl px-4 sm:px-6">
-                <div className="max-w-2xl">
+                <div className="max-w-4xl">
                     <span className="text-sm font-semibold uppercase tracking-widest text-primary">
                         Know the Facts
                     </span>

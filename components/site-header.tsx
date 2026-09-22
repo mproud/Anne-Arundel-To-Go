@@ -14,7 +14,7 @@ const navLinks = [
 export function SiteHeader() {
     return (
         <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-            <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+            <div className="mx-auto flex h-24 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
                 <Link
                     href="/#top"
                     className="flex shrink-0 items-center"
@@ -26,7 +26,7 @@ export function SiteHeader() {
                         width={900}
                         height={521}
                         priority
-                        className="h-12 w-auto sm:h-14"
+                        className="h-16 w-auto sm:h-18"
                     />
                 </Link>
 

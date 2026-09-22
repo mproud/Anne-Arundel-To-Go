@@ -24,7 +24,7 @@ export function AboutSection() {
                             <p>
                                 At some point, I started wondering why I could take home beer or a
                                 corked bottle of wine from a restaurant, but not a sealed cocktail
-                                from that same restaurant.
+                                from that same restaurant. It worked during COVID, so why not bring it back?
                             </p>
 
                             <p>

@@ -17,19 +17,19 @@ export function AboutSection() {
                         <div className="mt-8 space-y-5 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
                             <p>
                                 My name is Matt Proud. I've lived and worked in Annapolis for more than 15 years,
-                                and like a lot of people here, I have my go-to places — El Toro Bravo, Boatyard, Adam's, 
+                                and like everyone else, I have my go-to places - El Toro Bravo, Boatyard, Adam's, 
                                 and so, so many others.
                             </p>
 
                             <p>
                                 At some point, I started wondering why I could take home beer or a
-                                corked bottle of wine from a restaurant, but not a sealed cocktail
+                                corked bottle of wine from a restaurant, but not a cocktail
                                 from that same restaurant. It worked during COVID, so why not bring it back?
                             </p>
 
                             <p>
-                                The more I looked into it, the simpler the idea seemed. Other
-                                Maryland counties are already doing it. Why can't we do it too?
+                                The more I looked into it, the more I realized that it's not complicated. 
+                                Other Maryland counties are already doing it. Why can't we do it too?
                             </p>
 
                             <p>

@@ -1,11 +1,11 @@
-# vinext app
+# Anne Arundel To Go
 
-This project was created with create-vinext-app.
+## Environment Vars
 
-## Scripts
+RESEND_API_KEY=re_xxxxxxxxx
+RESEND_FROM_EMAIL="Anne Arundel To Go <hello@annearundeltogo.com>"
+PETITION_RECIPIENT_EMAIL=hello@annearundeltogo.com
+CONTACT_RECIPIENT_EMAIL=hello@annearundeltogo.com
 
-- `pnpm run dev` starts the vinext dev server.
-- `pnpm run build` builds the Cloudflare Worker output.
-- `pnpm run start` starts the built Worker locally with Wrangler.
-- `pnpm run deploy` deploys the Cloudflare Worker.
 
+npx wrangler secret put RESEND_API_KEY

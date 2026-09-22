@@ -10,6 +10,7 @@ import {
     SITE_URL,
 } from '@/lib/site'
 import './globals.css'
+import './accessibility.css'
 
 const publicSans = Public_Sans({
     subsets: ['latin'],
@@ -132,7 +133,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`bg-background ${publicSans.variable} ${oswald.variable}`}>
-            <body className="font-sans antialiased">{children}</body>
+            <body className="font-sans antialiased">
+                <a
+                    href="#main-content"
+                    className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-md bg-md-black px-4 py-3 text-sm font-semibold text-md-cream shadow-lg transition-transform focus:translate-y-0"
+                >
+                    Skip to main content
+                </a>
+                {children}
+            </body>
         </html>
     )
 }

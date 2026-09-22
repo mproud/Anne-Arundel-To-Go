@@ -18,7 +18,7 @@ export function CountUp({
     separator?: string
 }) {
     const ref = useRef<HTMLSpanElement>(null)
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState(end)
     const started = useRef(false)
 
     useEffect(() => {
@@ -28,19 +28,22 @@ export function CountUp({
             setValue(end)
             return
         }
+        if (typeof IntersectionObserver === 'undefined') return
+        let animationFrame: number | null = null
         const obs = new IntersectionObserver(
             (entries) => {
                 for (const entry of entries) {
                     if (entry.isIntersecting && !started.current) {
                         started.current = true
+                        setValue(0)
                         const start = performance.now()
                         const tick = (now: number) => {
                             const p = Math.min((now - start) / duration, 1)
                             const eased = 1 - Math.pow(1 - p, 3)
                             setValue(Math.round(end * eased))
-                            if (p < 1) requestAnimationFrame(tick)
+                            if (p < 1) animationFrame = requestAnimationFrame(tick)
                         }
-                        requestAnimationFrame(tick)
+                        animationFrame = requestAnimationFrame(tick)
                         obs.disconnect()
                     }
                 }
@@ -48,18 +51,20 @@ export function CountUp({
             { threshold: 0.4 },
         )
         obs.observe(el)
-        return () => obs.disconnect()
+        return () => {
+            obs.disconnect()
+            if (animationFrame !== null) cancelAnimationFrame(animationFrame)
+        }
     }, [end, duration])
 
-    const formatted = value
+    const format = (number: number) => number
         .toLocaleString('en-US', { useGrouping: separator !== '' })
         .replace(/,/g, separator)
 
     return (
         <span ref={ref} className={className}>
-            {prefix}
-            {formatted}
-            {suffix}
+            <span aria-hidden="true">{prefix}{format(value)}{suffix}</span>
+            <span className="sr-only">{prefix}{format(end)}{suffix}</span>
         </span>
     )
 }

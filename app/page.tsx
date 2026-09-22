@@ -5,7 +5,6 @@ import { AboutSection } from '@/components/about-section'
 import { PetitionSection } from '@/components/petition-section'
 import { SupportersSection } from '@/components/supporters-section'
 import { FaqSection } from '@/components/faq-section'
-import { PostersSection } from '@/components/posters-section'
 import { SocialSection } from '@/components/social-section'
 import { ContactSection } from '@/components/contact-section'
 import { SiteFooter } from '@/components/site-footer'
@@ -19,6 +18,7 @@ const structuredData = {
             '@id': `${SITE_URL}/#organization`,
             name: SITE_NAME,
             url: SITE_URL,
+            email: 'hello@annearundeltogo.com',
             logo: {
                 '@type': 'ImageObject',
                 url: `${SITE_URL}/images/anne-arundel-to-go-logo.png`,
@@ -29,14 +29,8 @@ const structuredData = {
                 name: 'Matt Proud',
             },
             areaServed: [
-                {
-                    '@type': 'AdministrativeArea',
-                    name: 'Anne Arundel County, Maryland',
-                },
-                {
-                    '@type': 'City',
-                    name: 'Annapolis, Maryland',
-                },
+                { '@type': 'AdministrativeArea', name: 'Anne Arundel County, Maryland' },
+                { '@type': 'City', name: 'Annapolis, Maryland' },
             ],
         },
         {
@@ -46,9 +40,7 @@ const structuredData = {
             name: SITE_NAME,
             description: SITE_DESCRIPTION,
             inLanguage: 'en-US',
-            publisher: {
-                '@id': `${SITE_URL}/#organization`,
-            },
+            publisher: { '@id': `${SITE_URL}/#organization` },
         },
         {
             '@type': 'WebPage',
@@ -56,12 +48,8 @@ const structuredData = {
             url: SITE_URL,
             name: SITE_NAME,
             description: SITE_DESCRIPTION,
-            isPartOf: {
-                '@id': `${SITE_URL}/#website`,
-            },
-            about: {
-                '@id': `${SITE_URL}/#organization`,
-            },
+            isPartOf: { '@id': `${SITE_URL}/#website` },
+            about: { '@id': `${SITE_URL}/#organization` },
             inLanguage: 'en-US',
         },
     ],
@@ -69,24 +57,23 @@ const structuredData = {
 
 export default function Page() {
     return (
-        <main>
+        <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
-                }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
             />
             <SiteHeader />
-            <Hero />
-            <SupportersSection />
-            <PetitionSection />
-            <FactsSection />
-            <FaqSection />
-            <AboutSection />
-            <PostersSection />
-            <SocialSection />
-            <ContactSection />
+            <main id="main-content">
+                <Hero />
+                <SupportersSection />
+                <PetitionSection />
+                <FactsSection />
+                <FaqSection />
+                <AboutSection />
+                <SocialSection />
+                <ContactSection />
+            </main>
             <SiteFooter />
-        </main>
+        </>
     )
 }

@@ -1,0 +1,18 @@
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 7rem;
+}
+
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

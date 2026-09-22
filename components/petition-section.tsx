@@ -1,11 +1,20 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { CheckCircle2, PenLine } from 'lucide-react'
 
 export function PetitionSection() {
     const router = useRouter()
+    const [supporterType, setSupporterType] = useState<'individual' | 'business'>('individual')
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search)
+        if (params.get('supporter') === 'business') {
+            setSupporterType('business')
+        }
+    }, [])
 
     return (
         <section id="petition" className="relative bg-md-black py-20 text-md-cream">
@@ -41,13 +50,52 @@ export function PetitionSection() {
                     <form
                         onSubmit={(e) => {
                             e.preventDefault()
-                            router.push('/thank-you?type=individual')
+                            router.push(`/thank-you?type=${supporterType}`)
                         }}
                         className="space-y-4"
                     >
                         <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
                             I support to-go cocktails
                         </h3>
+                        <fieldset>
+                            <legend className="mb-2 text-sm font-medium text-md-black">
+                                I am signing as
+                            </legend>
+                            <div className="grid grid-cols-2 gap-3">
+                                {([
+                                    { value: 'individual', label: 'An individual' },
+                                    { value: 'business', label: 'A business or organization' },
+                                ] as const).map((option) => (
+                                    <label
+                                        key={option.value}
+                                        className={`flex min-h-12 cursor-pointer items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium transition-colors ${
+                                            supporterType === option.value
+                                                ? 'border-primary bg-primary/10 text-md-black'
+                                                : 'border-input bg-background text-muted-foreground hover:border-primary/60'
+                                        }`}
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="supporterType"
+                                            value={option.value}
+                                            checked={supporterType === option.value}
+                                            onChange={() => setSupporterType(option.value)}
+                                            className="h-4 w-4 shrink-0 accent-[var(--md-red)]"
+                                        />
+                                        {option.label}
+                                    </label>
+                                ))}
+                            </div>
+                        </fieldset>
+                        {supporterType === 'business' && (
+                            <Field
+                                label="Business or organization name"
+                                name="organization"
+                                autoComplete="organization"
+                                maxLength={150}
+                                required
+                            />
+                        )}
                         <div className="grid gap-4 sm:grid-cols-2">
                             <Field label="First name" name="firstName" autoComplete="given-name" required />
                             <Field label="Last name" name="lastName" autoComplete="family-name" required />
@@ -68,6 +116,17 @@ export function PetitionSection() {
                             autoComplete="postal-code"
                             required
                         />
+                        {supporterType === 'business' && (
+                            <label className="flex items-start gap-3 text-sm text-muted-foreground">
+                                <input
+                                    type="checkbox"
+                                    name="authorized"
+                                    required
+                                    className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--md-red)]"
+                                />
+                                I am authorized to sign on behalf of this business or organization.
+                            </label>
+                        )}
                         <label className="flex items-start gap-3 text-sm text-muted-foreground">
                             <input
                                 type="checkbox"
@@ -82,7 +141,7 @@ export function PetitionSection() {
                             size="lg"
                             className="h-12 w-full font-display text-base font-semibold uppercase tracking-wide"
                         >
-                            Add my signature
+                            {supporterType === 'business' ? 'Add organization support' : 'Add my signature'}
                         </Button>
                         <p className="text-center text-xs text-muted-foreground">
                             By signing you confirm you are a Maryland resident aged 21 or older.

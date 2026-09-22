@@ -114,17 +114,17 @@ export function SupportersSection() {
                             Represent a business or group?
                         </h3>
                         <p className="mt-1 text-sm text-muted-foreground">
-                            Add your organization to the coalition and lend your name to the campaign.
+                            Select “A business or organization” in the petition form to add your support.
                         </p>
                     </div>
                     <a
-                        href="/?contact=business#contact"
+                        href="/?supporter=business#petition"
                         className={buttonVariants({
                             size: 'lg',
-                            className: 'font-display font-semibold uppercase tracking-wide',
+                            className: 'font-display h-12 px-6 font-semibold uppercase tracking-wide',
                         })}
                     >
-                        Endorse as a Business
+                        Sign as a Business
                     </a>
                 </div>
             </div>

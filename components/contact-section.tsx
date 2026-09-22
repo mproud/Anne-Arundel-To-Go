@@ -1,16 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { FlagStripe } from '@/components/flag-stripe'
 import { CheckCircle2, Mail } from 'lucide-react'
 
-type ContactReason = 'question' | 'business' | 'volunteer' | 'other'
+type ContactReason = 'question' | 'volunteer' | 'other'
 
 const reasonOptions: { value: ContactReason; label: string }[] = [
     { value: 'question', label: 'I have a question' },
-    { value: 'business', label: 'Endorse as a business or organization' },
     { value: 'volunteer', label: 'I want to help / volunteer' },
     { value: 'other', label: 'Something else' },
 ]
@@ -23,11 +21,6 @@ const messageCopy: Record<
         label: 'Message',
         placeholder: "What's your question?",
         required: true,
-    },
-    business: {
-        label: "Anything you'd like us to know?",
-        placeholder: 'Optional',
-        required: false,
     },
     volunteer: {
         label: 'How would you like to help?',
@@ -43,7 +36,6 @@ const messageCopy: Record<
 
 const submitLabels: Record<ContactReason, string> = {
     question: 'Send Question',
-    business: 'Add My Business',
     volunteer: "I'd Like to Help",
     other: 'Send Message',
 }
@@ -51,14 +43,6 @@ const submitLabels: Record<ContactReason, string> = {
 export function ContactSection() {
     const [submitted, setSubmitted] = useState(false)
     const [reason, setReason] = useState<ContactReason>('question')
-    const router = useRouter()
-
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search)
-        if (params.get('contact') === 'business') {
-            setReason('business')
-        }
-    }, [])
 
     const currentMessage = messageCopy[reason]
 
@@ -73,8 +57,8 @@ export function ContactSection() {
                         Contact the coalition
                     </h2>
                     <p className="mt-4 max-w-md text-pretty text-lg leading-relaxed text-muted-foreground">
-                        Have a question, want to add your business or organization to the coalition, or want
-                        to help out? Choose an option and send us a note.
+                        Have a question or want to help out?
+                        Choose an option and send us a note.
                     </p>
 
                     <div className="mt-8 space-y-4">
@@ -111,10 +95,6 @@ export function ContactSection() {
                         <form
                             onSubmit={(e) => {
                                 e.preventDefault()
-                                if (reason === 'business') {
-                                    router.push('/thank-you?type=business')
-                                    return
-                                }
                                 setSubmitted(true)
                             }}
                             className="space-y-4"
@@ -147,22 +127,6 @@ export function ContactSection() {
                                 required
                             />
 
-                            {reason === 'business' && (
-                                <>
-                                    <Field
-                                        label="Business or organization name"
-                                        name="organization"
-                                        autoComplete="organization"
-                                        required
-                                    />
-                                    <Field
-                                        label="Website or social media"
-                                        name="website"
-                                        placeholder="Optional"
-                                    />
-                                </>
-                            )}
-
                             <label className="block">
                                 <span className="mb-1.5 block text-sm font-medium text-md-black">
                                     {currentMessage.label}
@@ -177,29 +141,6 @@ export function ContactSection() {
                                     className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30"
                                     placeholder={currentMessage.placeholder}
                                 />
-                            </label>
-
-                            {reason === 'business' && (
-                                <label className="flex items-start gap-3 text-sm text-muted-foreground">
-                                    <input
-                                        type="checkbox"
-                                        name="publicEndorsement"
-                                        defaultChecked
-                                        required
-                                        className="mt-0.5 h-4 w-4 accent-[var(--md-red)]"
-                                    />
-                                    You may list my business or organization as a public supporter of Anne
-                                    Arundel To Go.
-                                </label>
-                            )}
-
-                            <label className="flex items-start gap-3 text-sm text-muted-foreground">
-                                <input
-                                    type="checkbox"
-                                    name="updates"
-                                    className="mt-0.5 h-4 w-4 accent-[var(--md-red)]"
-                                />
-                                Send me occasional campaign updates.
                             </label>
 
                             <Button

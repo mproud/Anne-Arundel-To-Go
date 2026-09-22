@@ -33,7 +33,7 @@ export function AboutSection() {
                             </p>
 
                             <p>
-                                So I started talking to people about it. What began as a pretty
+                                So I started talking to friends about it. What began as a pretty
                                 simple question has grown into a coalition of neighbors,
                                 restaurants, and local businesses working to bring cocktails to go
                                 to Anne Arundel County and Annapolis.

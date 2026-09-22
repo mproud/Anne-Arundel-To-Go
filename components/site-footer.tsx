@@ -46,8 +46,13 @@ export function SiteFooter() {
                 </div>
 
                 <div className="mt-10 flex flex-col gap-2 border-t border-md-cream/15 pt-6 text-xs text-md-cream/50 sm:flex-row sm:items-center sm:justify-between">
-                    <p>&copy; {new Date().getFullYear()} Anne Arundel To Go</p>
-                    <p>Not affiliated with any government agency. Please drink responsibly.</p>
+                    <p>
+                        &copy; {new Date().getFullYear()} Anne Arundel To Go
+                    </p>
+                    <p className="text-right">
+                        Not affiliated with any government agency or political campaign/organization.<br/>
+                        Please drink responsibly.
+                    </p>
                 </div>
             </div>
         </footer>

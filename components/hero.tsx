@@ -25,26 +25,15 @@ export function Hero() {
                             href="#petition"
                             className={buttonVariants({
                                 size: 'lg',
-                                className: 'h-12 font-display text-base font-semibold uppercase tracking-wide',
+                                className: 'h-14 px-8 font-display text-lg font-semibold uppercase tracking-wide',
                             })}
                         >
                             <PenLine className="h-5 w-5" />
                             Sign the Petition
                         </a>
-                        <a
-                            href="/?contact=business#contact"
-                            className={buttonVariants({
-                                size: 'lg',
-                                variant: 'secondary',
-                                className:
-                                    'h-12 bg-secondary font-display text-base font-semibold uppercase tracking-wide text-secondary-foreground hover:bg-secondary/90',
-                            })}
-                        >
-                            Endorse as a Business
-                        </a>
                     </div>
 
-                    <div className="mt-10 flex items-center gap-6">
+                    {/* <div className="mt-10 flex items-center gap-6">
                         <div>
                             <CountUp
                                 end={5}
@@ -66,7 +55,7 @@ export function Hero() {
                                 Local businesses
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="relative">

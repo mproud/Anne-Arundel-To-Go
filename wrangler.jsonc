@@ -23,6 +23,9 @@
 		"enabled": true
 	},
 	"upload_source_maps": true,
+	"secrets": {
+		"required": ["TURNSTILE_SECRET", "FORM_RATE_LIMIT_SECRET"]
+	},
 	// Disable preview URLs like <version>.<subdomain>.workers.dev
 	"preview_urls": false,
 	// Disable the default <name>.<subdomain>.workers.dev route
@@ -53,6 +56,7 @@
 	// Environment Vars
 	"vars": {
 		"TURNSTILE_SITE_KEY": "0x4AAAAAAFCjZZ6AytZ2ek8q",
+		"TURNSTILE_HOSTNAMES": "annearundeltogo.com,www.annearundeltogo.com,preview.annearundeltogo.com",
 		"RESEND_FROM_EMAIL": "Anne Arundel To Go <hello@annearundeltogo.com>",
 		"RESEND_PETITION_SEGMENT_ID": "7fb44c72-7761-46c3-87d0-109b40aa00b6",
 		"RESEND_UPDATES_SEGMENT_ID": "80ec53ce-33ed-46b4-835b-b02b1a533bf7",

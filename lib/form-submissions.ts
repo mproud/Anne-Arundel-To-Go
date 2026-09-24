@@ -36,8 +36,10 @@ export async function recordFormSubmission(
         !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(submissionId)) {
         throw new FormRequestError('Invalid submission ID. Please refresh the page and try again.', 400)
     }
-    const db = formDb()
+    // Validate the Turnstile token before touching D1. This follows Cloudflare's
+    // existing-widget Spin flow and ensures every accepted form reaches Siteverify.
     await verifyFormChallenge(request, token, submission.kind)
+    const db = formDb()
     await enforceFormRateLimit(db, request, submission.kind)
 
     const normalized = JSON.stringify(submission)

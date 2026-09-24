@@ -23,13 +23,28 @@ export async function verifyFormChallenge(request: Request, token: unknown, acti
         throw new FormRequestError('Please complete the security check and try again.', 400)
     }
 
+    const expectedHostnames = new Set(
+        (runtimeEnv.TURNSTILE_HOSTNAMES ?? '')
+            .split(',')
+            .map((hostname) => hostname.trim().toLowerCase())
+            .filter(Boolean),
+    )
+    if (expectedHostnames.size === 0) {
+        throw new Error('TURNSTILE_HOSTNAMES is not configured.')
+    }
+
+    const remoteip = request.headers.get('CF-Connecting-IP') ?? ''
     let result: { success?: boolean; hostname?: string; action?: string }
     try {
         const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ secret, response: token }),
-            signal: AbortSignal.timeout(8_000),
+            body: new URLSearchParams({
+                secret,
+                response: token,
+                remoteip,
+            }),
+            signal: AbortSignal.timeout(10_000),
         })
         if (!response.ok) throw new Error(`Siteverify HTTP ${response.status}`)
         result = (await response.json()) as typeof result
@@ -37,9 +52,10 @@ export async function verifyFormChallenge(request: Request, token: unknown, acti
         console.error('Turnstile Siteverify unavailable', error instanceof Error ? error.name : 'unknown')
         throw new FormRequestError('Security check temporarily unavailable. Please try again.', 503)
     }
-    // Also verify the configured widget action and hostname. A forged or replayed
-    // token must never bypass validation merely because the widget rendered.
-    if (!result.success || result.action !== action || result.hostname !== new URL(request.url).hostname) {
+    // Spin's canonical flow requires both the stable action and an explicit,
+    // deployment-specific hostname allowlist. Never trust request.url as the policy.
+    const hostname = result.hostname?.toLowerCase()
+    if (!result.success || result.action !== action || !hostname || !expectedHostnames.has(hostname)) {
         throw new FormRequestError('Security check expired or failed. Please try again.', 403)
     }
 }

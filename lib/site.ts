@@ -1,9 +1,9 @@
 export const SITE_URL = 'https://annearundeltogo.com'
 export const SITE_NAME = 'Anne Arundel To Go'
-export const SITE_TITLE = 'Anne Arundel To Go | Support Cocktails To-Go'
+export const SITE_TITLE = 'Sign the Petition - Support Cocktails to Go'
 export const SITE_DESCRIPTION =
-    'Join neighbors, restaurants, and local businesses supporting sealed cocktails to go in Anne Arundel County and Annapolis. Add your name to the petition.'
-export const SITE_OG_TITLE = 'Let Anne Arundel Take It To-Go'
+    'Sign the petition to bring cocktails to go to Anne Arundel County! Add your name and join your neighbors in supporting more options for local restaurants.'
+export const SITE_OG_TITLE = 'Sign the Petition - Support Cocktails to Go'
 export const SITE_OG_DESCRIPTION =
-    'Restaurants can already send customers home with beer and wine. Join the coalition supporting sealed cocktails to go in Anne Arundel County and Annapolis.'
-export const SITE_OG_IMAGE = '/images/anne-arundel-to-go-og.jpg'
+    'Sign the petition to bring cocktails to go to Anne Arundel County!'
+export const SITE_OG_IMAGE = '/images/aa-to-go-og-share-1200x630.jpg'

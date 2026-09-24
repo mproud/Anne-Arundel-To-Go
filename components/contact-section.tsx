@@ -10,7 +10,7 @@ type ContactReason = 'question' | 'volunteer' | 'other'
 
 const reasonOptions: { value: ContactReason; label: string }[] = [
     { value: 'question', label: 'I have a question' },
-    { value: 'volunteer', label: 'I want to help / volunteer' },
+    { value: 'volunteer', label: 'I want to help or volunteer' },
     { value: 'other', label: 'Something else' },
 ]
 

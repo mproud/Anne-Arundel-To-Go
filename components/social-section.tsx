@@ -23,7 +23,7 @@ const graphics = [
         title: 'Share a Post',
         subtitle: 'Instagram & Facebook',
         ratio: 'aspect-square',
-        src: '/social/social-square.png',
+        src: '/social/anne-arundel-to-go-social-square.png',
         file: 'anne-arundel-to-go-social-square.png',
     },
     {
@@ -31,7 +31,7 @@ const graphics = [
         title: 'Share a Story',
         subtitle: 'Instagram & Facebook Stories',
         ratio: 'aspect-[9/16]',
-        src: '/social/social-story.png',
+        src: '/social/anne-arundel-to-go-social-story.png',
         file: 'anne-arundel-to-go-social-story.png',
     },
 ]

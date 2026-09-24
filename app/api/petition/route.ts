@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { escapeHtml, getRuntimeEnv, sendResendEmail } from '@/lib/resend'
 import { savePetitionContact } from '@/lib/resend-contacts'
+import { attributionRows, sanitizeAttribution } from '@/lib/attribution'
 
 type PetitionRequest = {
     supporterType?: unknown
@@ -12,6 +13,7 @@ type PetitionRequest = {
     authorized?: unknown
     publicSupporter?: unknown
     updates?: unknown
+    attribution?: unknown
 }
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -39,6 +41,7 @@ export async function POST(request: Request) {
     const authorized = body.authorized === true
     const publicSupporter = body.publicSupporter === true
     const updates = body.updates === true
+    const attribution = sanitizeAttribution(body.attribution)
 
     if (!supporterType || !firstName || !lastName || !emailPattern.test(email) || !zipPattern.test(zip)) {
         return NextResponse.json({ error: 'Please complete all required fields with valid information.' }, { status: 400 })
@@ -65,6 +68,7 @@ export async function POST(request: Request) {
             ['May be listed publicly', publicSupporter ? 'Yes' : 'No'],
         ] : []),
         ['Opted into updates', updates ? 'Yes' : 'No'],
+        ...attributionRows(attribution),
     ]
 
     const text = rows.map(([label, value]) => `${label}: ${value}`).join('\n')
@@ -83,6 +87,7 @@ export async function POST(request: Request) {
             organization: supporterType === 'business' ? organization : '',
             publicSupporter: supporterType === 'business' && publicSupporter,
             updates,
+            attribution,
         })
         await sendResendEmail({ to: recipient, subject, text, html, replyTo: email })
         return NextResponse.json({ ok: true })

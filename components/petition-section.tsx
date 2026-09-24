@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { Building2, PenLine, UserRound, type LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { trackEvent } from './google-analytics'
+import { getAttribution } from '@/lib/attribution'
 
 type SupporterType = 'individual' | 'business'
 
@@ -67,7 +68,7 @@ export function PetitionSection() {
             const response = await fetch('/api/petition', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form),
+                body: JSON.stringify({ ...form, attribution: getAttribution() }),
             })
 
             const result = (await response.json().catch(() => null)) as { error?: string } | null

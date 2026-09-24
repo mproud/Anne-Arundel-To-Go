@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { FlagStripe } from '@/components/flag-stripe'
 import { CheckCircle2, Mail } from 'lucide-react'
 import { trackEvent } from './google-analytics'
+import { getAttribution } from '@/lib/attribution'
 
 type ContactReason = 'question' | 'volunteer' | 'other'
 
@@ -50,6 +51,7 @@ export function ContactSection() {
                     name: formData.get('name'),
                     email: formData.get('email'),
                     message: formData.get('message'),
+                    attribution: getAttribution(),
                 }),
             })
 

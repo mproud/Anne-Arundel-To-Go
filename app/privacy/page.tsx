@@ -57,6 +57,13 @@ export default function PrivacyPage() {
                                 added to our petition contacts list. Only people who separately choose
                                 to receive updates are added to our coalition updates mailing list.
                             </p>
+
+                            <p className="mt-3">
+                                When you arrive through a link with campaign tracking parameters, we
+                                keep those parameters during your visit and include them with your
+                                petition submission so we can understand where submissions come from.
+                                They may also be saved with your contact details in Resend.
+                            </p>
                         </section>
 
                         <section>
@@ -88,7 +95,8 @@ export default function PrivacyPage() {
                                 When you contact us, we collect your name,
                                 email address, and the information you include
                                 in your message. We use that information to
-                                read and respond to your inquiry.
+                                read and respond to your inquiry. We also record any campaign
+                                tracking parameters associated with your visit.
                             </p>
                         </section>
 

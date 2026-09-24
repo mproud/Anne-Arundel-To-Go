@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { escapeHtml, getRuntimeEnv, sendResendEmail } from '@/lib/resend'
+import { attributionRows, sanitizeAttribution } from '@/lib/attribution'
 
 type ContactRequest = {
     reason?: unknown
@@ -7,6 +8,7 @@ type ContactRequest = {
     email?: unknown
     message?: unknown
     updates?: unknown
+    attribution?: unknown
 }
 
 const allowedReasons = new Set(['question', 'volunteer', 'other'])
@@ -30,6 +32,7 @@ export async function POST(request: Request) {
     const email = stringValue(body.email, 254).toLowerCase()
     const message = stringValue(body.message, 5000)
     const updates = body.updates === true
+    const attribution = sanitizeAttribution(body.attribution)
 
     if (!allowedReasons.has(reason) || !name || !emailPattern.test(email) || !message) {
         return NextResponse.json({ error: 'Please complete all required fields with valid information.' }, { status: 400 })
@@ -51,6 +54,8 @@ export async function POST(request: Request) {
         '',
         'Message:',
         message,
+        '',
+        ...attributionRows(attribution).map(([label, value]) => `${label}: ${value}`),
     ].join('\n')
 
     const html = `
@@ -61,6 +66,9 @@ export async function POST(request: Request) {
         <p><strong>Opted into updates:</strong> ${updates ? 'Yes' : 'No'}</p>
         <hr />
         <p>${escapeHtml(message).replaceAll('\n', '<br />')}</p>
+        <hr />
+        <h3>Attribution</h3>
+        <ul>${attributionRows(attribution).map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`).join('')}</ul>
     `
 
     try {

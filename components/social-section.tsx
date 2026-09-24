@@ -10,7 +10,7 @@ import {
     Share2,
 } from 'lucide-react'
 
-import { SITE_URL } from '@/lib/site'
+import { sharingUrl } from '@/lib/tracking-links'
 import { trackEvent } from './google-analytics'
 
 /* -------------------------------------------------------
@@ -264,7 +264,7 @@ export function SocialSection() {
 
     const shareWebsite = async () => {
         if (!navigator.share) {
-            await copyText('link', SITE_URL)
+            await copyText('link', sharingUrl('shared_link', 'referral', 'copy_link'))
 
             setNotice('Link copied. You can paste it into any app.')
 
@@ -274,8 +274,9 @@ export function SocialSection() {
         try {
             await navigator.share({
                 title: 'Anne Arundel To Go',
-                url: SITE_URL,
+                url: sharingUrl('shared_link', 'referral', 'native_share'),
             })
+            trackEvent('social_share', { platform: 'native' })
         } catch (error) {
             if (
                 error instanceof DOMException &&
@@ -292,7 +293,7 @@ export function SocialSection() {
 
     const facebookUrl =
         'https://www.facebook.com/sharer/sharer.php?u=' +
-        encodeURIComponent(SITE_URL)
+        encodeURIComponent(sharingUrl('facebook', 'social', 'facebook_button'))
 
     /* -------------------------------------------------------
        Render
@@ -367,7 +368,7 @@ export function SocialSection() {
 
                     <button
                         type="button"
-                        onClick={() => copyText('link', SITE_URL)}
+                        onClick={() => copyText('link', sharingUrl('shared_link', 'referral', 'copy_link'))}
                         className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-background px-6 text-sm font-semibold text-md-black transition-colors hover:bg-secondary"
                     >
                         {copiedId === 'link' ? (

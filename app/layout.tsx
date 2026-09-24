@@ -12,6 +12,8 @@ import {
 import './globals.css'
 import './accessibility.css'
 import { GoogleAnalytics } from '@/components/google-analytics'
+import { AttributionTracker } from '@/components/attribution-tracker'
+import { Suspense } from 'react'
 
 const publicSans = Public_Sans({
     subsets: ['latin'],
@@ -144,6 +146,7 @@ export default function RootLayout({
                 
                 {children}
 
+                <Suspense fallback={null}><AttributionTracker /></Suspense>
                 <GoogleAnalytics />
             </body>
         </html>

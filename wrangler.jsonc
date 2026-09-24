@@ -40,5 +40,7 @@
 	// Environment Vars
 	"vars": {
 		"RESEND_FROM_EMAIL": "Anne Arundel To Go <hello@annearundeltogo.com>",
+		"RESEND_PETITION_SEGMENT_ID": "7fb44c72-7761-46c3-87d0-109b40aa00b6",
+		"RESEND_UPDATES_SEGMENT_ID": "80ec53ce-33ed-46b4-835b-b02b1a533bf7",
 	},
 }

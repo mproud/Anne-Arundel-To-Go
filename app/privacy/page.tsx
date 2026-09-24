@@ -51,6 +51,12 @@ export default function PrivacyPage() {
                                 support for the coalition and to contact you
                                 about your submission if needed.
                             </p>
+
+                            <p className="mt-3">
+                                We also store petition contact details in Resend. Everyone who signs is
+                                added to our petition contacts list. Only people who separately choose
+                                to receive updates are added to our coalition updates mailing list.
+                            </p>
                         </section>
 
                         <section>

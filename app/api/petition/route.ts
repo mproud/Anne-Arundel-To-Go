@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { escapeHtml, getRuntimeEnv, sendResendEmail } from '@/lib/resend'
+import { savePetitionContact } from '@/lib/resend-contacts'
 
 type PetitionRequest = {
     supporterType?: unknown
@@ -75,6 +76,14 @@ export async function POST(request: Request) {
     `
 
     try {
+        // Save the contact and its consent-based segment memberships before
+        // confirming the signature. Retain the per-submission notification email.
+        await savePetitionContact({
+            supporterType, firstName, lastName, email, zip,
+            organization: supporterType === 'business' ? organization : '',
+            publicSupporter: supporterType === 'business' && publicSupporter,
+            updates,
+        })
         await sendResendEmail({ to: recipient, subject, text, html, replyTo: email })
         return NextResponse.json({ ok: true })
     } catch (error) {

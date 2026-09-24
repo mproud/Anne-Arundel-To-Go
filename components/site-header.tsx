@@ -5,9 +5,10 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/button'
+import { SHOW_COALITION } from '@/lib/site-features'
 
 const navLinks = [
-    { href: '/#supporters', label: 'Supporters' },
+    ...(SHOW_COALITION ? [{ href: '/#supporters', label: 'Supporters' }] : []),
     { href: '/#facts', label: 'The Facts' },
     { href: '/#faq', label: 'FAQ' },
     { href: '/#about', label: 'Who We Are' },

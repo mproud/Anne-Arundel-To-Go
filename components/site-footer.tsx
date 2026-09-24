@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FlagStripe } from '@/components/flag-stripe'
+import { SHOW_COALITION } from '@/lib/site-features'
 
 export function SiteFooter() {
     return (
@@ -19,7 +20,7 @@ export function SiteFooter() {
 
                     <nav className="flex flex-col gap-2.5 text-sm" aria-label="Footer navigation">
                         <a href="/#facts" className="text-md-cream/70 transition-colors hover:text-secondary">The Facts</a>
-                        <a href="/#supporters" className="text-md-cream/70 transition-colors hover:text-secondary">Supporters</a>
+                        {SHOW_COALITION && <a href="/#supporters" className="text-md-cream/70 transition-colors hover:text-secondary">Supporters</a>}
                         <a href="/#posters" className="text-md-cream/70 transition-colors hover:text-secondary">Toolkit</a>
                         <a href="/#petition" className="text-md-cream/70 transition-colors hover:text-secondary">Sign the Petition</a>
                         <a href="/#contact" className="text-md-cream/70 transition-colors hover:text-secondary">Contact</a>

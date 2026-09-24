@@ -5,6 +5,7 @@ import { FlagStripe } from '@/components/flag-stripe'
 import { PenLine } from 'lucide-react'
 import { CountUp } from '@/components/count-up'
 import { SUPPORTER_COUNTS } from '@/lib/supporter-counts'
+import { SHOW_COALITION } from '@/lib/site-features'
 
 export function Hero() {
     return (
@@ -20,23 +21,25 @@ export function Hero() {
                         Restaurants can already send customers home with beer and wine. We&apos;re supporting a local option for licensed restaurants to offer sealed cocktails to go under clear rules for responsible service.
                     </p>
 
-                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:hidden">
                         <a href="#petition" className={buttonVariants({ size: 'lg', className: 'h-14 px-8 font-display text-lg font-semibold uppercase tracking-wide' })}>
                             <PenLine className="h-5 w-5 mr-2" aria-hidden="true" />
                             Sign the Petition
                         </a>
                     </div>
-                    <div className="mt-10 flex items-center gap-6" aria-label="Coalition supporter totals">
-                        <div>
-                            <CountUp end={SUPPORTER_COUNTS.residents} suffix="+" className="font-display text-3xl font-bold text-secondary" />
-                            <div className="text-xs uppercase tracking-widest text-md-cream/75">Residents signed on</div>
+                    {SHOW_COALITION && (
+                        <div className="mt-10 flex items-center gap-6" aria-label="Coalition supporter totals">
+                            <div>
+                                <CountUp end={SUPPORTER_COUNTS.residents} suffix="+" className="font-display text-3xl font-bold text-secondary" />
+                                <div className="text-xs uppercase tracking-widest text-md-cream/75">Residents signed on</div>
+                            </div>
+                            <div className="h-10 w-px bg-md-cream/20" aria-hidden="true" />
+                            <div>
+                                <CountUp end={SUPPORTER_COUNTS.businessesAndGroups} suffix="+" className="font-display text-3xl font-bold text-secondary" />
+                                <div className="text-xs uppercase tracking-widest text-md-cream/75">Businesses &amp; groups</div>
+                            </div>
                         </div>
-                        <div className="h-10 w-px bg-md-cream/20" aria-hidden="true" />
-                        <div>
-                            <CountUp end={SUPPORTER_COUNTS.businessesAndGroups} suffix="+" className="font-display text-3xl font-bold text-secondary" />
-                            <div className="text-xs uppercase tracking-widest text-md-cream/75">Businesses &amp; groups</div>
-                        </div>
-                    </div>
+                    )}
                 </div>
 
                 <div className={styles.formColumn}>

@@ -1,8 +1,9 @@
 import { SiteHeader } from '@/components/site-header'
 import { Hero } from '@/components/hero'
-import { FactsSection } from '@/components/facts-section'
+import { FactsSection } from '@/components/facts-section-refined'
 import { AboutSection } from '@/components/about-section'
 import { SupportersSection } from '@/components/supporters-section'
+import { SHOW_COALITION } from '@/lib/site-features'
 import { FaqSection } from '@/components/faq-section'
 import { PostersSection } from '@/components/posters-section'
 import { SocialSection } from '@/components/social-section'
@@ -65,7 +66,11 @@ export default function Page() {
             <SiteHeader />
             <main id="main-content">
                 <Hero />
-                <SupportersSection />
+                {SHOW_COALITION && (
+                    <div className="border-b-4 border-secondary">
+                        <SupportersSection />
+                    </div>
+                )}
                 <FactsSection />
                 <FaqSection />
                 <AboutSection />

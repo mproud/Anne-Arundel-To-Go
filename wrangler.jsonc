@@ -45,7 +45,7 @@
 	// D1 binding is REQUIRED. Replace the placeholder UUID before deployment.
 	"d1_databases": [
 		{
-			"binding": "anne_arundel_to_go_forms",
+			"binding": "FORM_DB",
 			"database_name": "anne-arundel-to-go-forms",
 			"database_id": "81c6da8b-2286-41db-b6d0-2c8d11ab4d8d"
 		}

@@ -344,7 +344,7 @@ function Field({
             <input
                 name={name}
                 type={type}
-                className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30"
+                className="h-11 w-full rounded-md border border-input bg-background px-3 text-base text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30"
                 {...props}
             />
         </label>

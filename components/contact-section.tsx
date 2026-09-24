@@ -138,7 +138,7 @@ export function ContactSection() {
                                     name="reason"
                                     value={reason}
                                     onChange={(event) => setReason(event.target.value as ContactReason)}
-                                    className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30"
+                                    className="h-11 w-full rounded-md border border-input bg-background px-3 text-base text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30"
                                 >
                                     {reasonOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
                                 </select>
@@ -153,7 +153,7 @@ export function ContactSection() {
                                     name="message"
                                     rows={5}
                                     required
-                                    className="w-full resize-y rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30"
+                                    className="w-full resize-y rounded-md border border-input bg-background px-3 py-2 text-base text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30"
                                     placeholder={currentMessage.placeholder}
                                 />
                             </label>
@@ -182,7 +182,7 @@ function Field({ label, name, type = 'text', ...props }: { label: string; name: 
     return (
         <label className="block">
             <span className="mb-1.5 block text-sm font-medium text-md-black">{label}</span>
-            <input name={name} type={type} className="h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30" {...props} />
+            <input name={name} type={type} className="h-11 w-full rounded-md border border-input bg-background px-3 text-base text-foreground outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30" {...props} />
         </label>
     )
 }

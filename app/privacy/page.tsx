@@ -64,9 +64,10 @@ export default function PrivacyPage() {
                             </p>
 
                             <p className="mt-3">
-                                We also store petition contact details in Resend. Everyone who signs is
-                                added to our petition contacts list. Only people who separately choose
-                                to receive updates are added to our coalition updates mailing list.
+                                We also store petition contact details in a secured database.
+                                Everyone who signs is added to our petition contacts list. Only people 
+                                who separately choose to receive updates are added to our coalition 
+                                updates mailing list.
                             </p>
 
                             <p className="mt-3">
@@ -112,7 +113,9 @@ export default function PrivacyPage() {
                                 email address, and the information you include
                                 in your message. We use that information to
                                 read and respond to your inquiry. We also record any campaign
-                                tracking parameters associated with your visit.
+                                tracking parameters associated with your visit. Contact form
+                                submissions are also stored in our secured Cloudflare database
+                                so we can reliably process and respond to them.
                             </p>
                         </section>
 

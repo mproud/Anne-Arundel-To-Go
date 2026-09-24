@@ -1,7 +1,8 @@
 # Resend acknowledgement automations
 
-The website emits **two separate named events** only after the respective form's
-notification email has been accepted by Resend:
+The website commits each form submission and three jobs in D1 before responding.
+The separate scheduled outbox Worker syncs the Contact, sends the coalition
+notification, then emits the named event to Resend. A failed job is retried:
 
 | Event name | Recipient | Event payload |
 | --- | --- | --- |
@@ -44,9 +45,9 @@ email step delivers acknowledgement emails to globally unsubscribed contacts;
 if Resend suppresses them, use the transactional Email API for acknowledgements
 instead. Do not clear an unsubscribe merely to send an acknowledgement.
 
-**Failure behavior:** if a notification email fails, the form still reports its
-existing error and no event is emitted. If the notification succeeds but the
-event fails, the form still reports success; inspect Worker logs for
-`acknowledgement event failed` and Resend Automation Runs. The current
-application has no persistent outbox or event deduplication, so event delivery
-is best effort and submitting the same form twice can send two confirmations.
+**Failure behavior:** Form success means D1 durably recorded the submission;
+notification/event jobs are processed later and retried on failure. Query the
+`form_jobs` table and check the scheduled Worker's logs and Resend Automation
+Runs. The Events API does not guarantee exactly-once event delivery after a
+Worker crash, and an accepted event does not establish inbox delivery. See
+`FORM_HARDENING_SETUP.md` for configuration and the live test matrix.

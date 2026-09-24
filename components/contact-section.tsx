@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { FlagStripe } from '@/components/flag-stripe'
 import { CheckCircle2, Mail } from 'lucide-react'
 import { trackEvent } from './google-analytics'
 import { getAttribution } from '@/lib/attribution'
+import { TurnstileWidget } from './turnstile-widget'
 
 type ContactReason = 'question' | 'volunteer' | 'other'
 
@@ -32,12 +33,19 @@ export function ContactSection() {
     const [reason, setReason] = useState<ContactReason>('question')
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const [turnstileToken, setTurnstileToken] = useState('')
+    const resetChallenge = useRef<(() => void) | null>(null)
+    const submissionId = useRef<string | null>(null)
     const currentMessage = messageCopy[reason]
 
     const submit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (isSubmitting) return
-
+        if (!turnstileToken) {
+            setError('Please complete the security check before submitting.')
+            return
+        }
+        submissionId.current ??= crypto.randomUUID()
         const formData = new FormData(event.currentTarget)
         setError(null)
         setIsSubmitting(true)
@@ -52,6 +60,8 @@ export function ContactSection() {
                     email: formData.get('email'),
                     message: formData.get('message'),
                     attribution: getAttribution(),
+                    submissionId: submissionId.current,
+                    turnstileToken,
                 }),
             })
 
@@ -71,6 +81,8 @@ export function ContactSection() {
                     : 'We could not send your message. Please try again.',
             )
         } finally {
+            resetChallenge.current?.()
+            setTurnstileToken('')
             setIsSubmitting(false)
         }
     }
@@ -111,10 +123,15 @@ export function ContactSection() {
                             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
                                 Thanks for reaching out! We'll be in touch.
                             </p>
-                            <Button variant="outline" onClick={() => setSubmitted(false)}>Send another</Button>
+                            <Button variant="outline" onClick={() => {
+                                submissionId.current = null
+                                setTurnstileToken('')
+                                setSubmitted(false)
+                            }}>Send another</Button>
                         </div>
                     ) : (
                         <form onSubmit={submit} className="space-y-4">
+                            <TurnstileWidget action="contact" onTokenChange={setTurnstileToken} resetRef={resetChallenge} />
                             <label className="block">
                                 <span className="mb-1.5 block text-sm font-medium text-md-black">What are you reaching out about?</span>
                                 <select

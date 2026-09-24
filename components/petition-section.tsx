@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Building2, PenLine, UserRound, type LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { trackEvent } from './google-analytics'
 import { getAttribution } from '@/lib/attribution'
+import { TurnstileWidget } from './turnstile-widget'
 
 type SupporterType = 'individual' | 'business'
 
@@ -38,6 +39,9 @@ export function PetitionSection() {
     const [form, setForm] = useState(initialFormState)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [error, setError] = useState<string | null>(null)
+    const [turnstileToken, setTurnstileToken] = useState('')
+    const resetChallenge = useRef<(() => void) | null>(null)
+    const submissionId = useRef<string | null>(null)
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search)
@@ -60,7 +64,11 @@ export function PetitionSection() {
     const submit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (isSubmitting) return
-
+        if (!turnstileToken) {
+            setError('Please complete the security check before submitting.')
+            return
+        }
+        submissionId.current ??= crypto.randomUUID()
         setError(null)
         setIsSubmitting(true)
 
@@ -68,7 +76,8 @@ export function PetitionSection() {
             const response = await fetch('/api/petition', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...form, attribution: getAttribution() }),
+                body: JSON.stringify({ ...form, attribution: getAttribution(),
+                    submissionId: submissionId.current, turnstileToken }),
             })
 
             const result = (await response.json().catch(() => null)) as { error?: string } | null
@@ -90,6 +99,8 @@ export function PetitionSection() {
                     : 'We could not record your support. Please try again.',
             )
         } finally {
+            resetChallenge.current?.()
+            setTurnstileToken('')
             setIsSubmitting(false)
         }
     }
@@ -112,6 +123,7 @@ export function PetitionSection() {
 
                 <div className="rounded-2xl bg-card p-6 text-card-foreground shadow-xl ring-1 ring-md-cream/10 sm:p-8">
                     <form onSubmit={submit} className="space-y-5">
+                        <TurnstileWidget action="petition" onTokenChange={setTurnstileToken} resetRef={resetChallenge} />
                         <div>
                             <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
                                 I support to-go cocktails

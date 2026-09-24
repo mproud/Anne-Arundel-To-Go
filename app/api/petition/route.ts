@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
-import { escapeHtml, getRuntimeEnv, sendResendEmail } from '@/lib/resend'
-import { savePetitionContact } from '@/lib/resend-contacts'
-import { sendResendEvent } from '@/lib/resend-events'
-import { attributionRows, sanitizeAttribution } from '@/lib/attribution'
+import { sanitizeAttribution } from '@/lib/attribution'
+import { FormRequestError } from '@/lib/form-security'
+import { recordFormSubmission } from '@/lib/form-submissions'
 
 type PetitionRequest = {
     supporterType?: unknown
@@ -15,6 +14,8 @@ type PetitionRequest = {
     publicSupporter?: unknown
     updates?: unknown
     attribution?: unknown
+    submissionId?: unknown
+    turnstileToken?: unknown
 }
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -28,7 +29,10 @@ export async function POST(request: Request) {
     let body: PetitionRequest
 
     try {
-        body = (await request.json()) as PetitionRequest
+        const raw = await request.text()
+        if (raw.length > 16_384) return NextResponse.json({ error: 'Submission is too large.' }, { status: 413 })
+        body = JSON.parse(raw) as PetitionRequest
+        if (!body || typeof body !== 'object' || Array.isArray(body)) throw new Error('Invalid request.')
     } catch {
         return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
     }
@@ -47,64 +51,26 @@ export async function POST(request: Request) {
     if (!supporterType || !firstName || !lastName || !emailPattern.test(email) || !zipPattern.test(zip)) {
         return NextResponse.json({ error: 'Please complete all required fields with valid information.' }, { status: 400 })
     }
-
     if (supporterType === 'business' && (!organization || !authorized)) {
         return NextResponse.json({ error: 'Business and organization supporters must provide an organization name and confirm authorization.' }, { status: 400 })
     }
 
-    const recipient = getRuntimeEnv('PETITION_RECIPIENT_EMAIL') || getRuntimeEnv('RESEND_FROM_EMAIL') || 'hello@annearundeltogo.com'
-    const supporterLabel = supporterType === 'business' ? 'Business / organization' : 'Individual'
-    const subject = supporterType === 'business'
-        ? `New organization supporter: ${organization}`
-        : `New petition signature: ${firstName} ${lastName}`
-
-    const rows = [
-        ['Supporter type', supporterLabel],
-        ['Name', `${firstName} ${lastName}`],
-        ['Email', email],
-        ['ZIP code', zip],
-        ...(supporterType === 'business' ? [
-            ['Business / organization', organization],
-            ['Authorized representative', authorized ? 'Yes' : 'No'],
-            ['May be listed publicly', publicSupporter ? 'Yes' : 'No'],
-        ] : []),
-        ['Opted into updates', updates ? 'Yes' : 'No'],
-        ...attributionRows(attribution),
-    ]
-
-    const text = rows.map(([label, value]) => `${label}: ${value}`).join('\n')
-    const html = `
-        <h2>New Anne Arundel To Go petition submission</h2>
-        <table cellpadding="6" cellspacing="0" style="border-collapse:collapse">
-            ${rows.map(([label, value]) => `<tr><th align="left" style="border-bottom:1px solid #ddd">${escapeHtml(label)}</th><td style="border-bottom:1px solid #ddd">${escapeHtml(value)}</td></tr>`).join('')}
-        </table>
-    `
-
     try {
-        // Save the contact and its consent-based segment memberships before
-        // confirming the signature. Retain the per-submission notification email.
-        await savePetitionContact({
-            supporterType, firstName, lastName, email, zip,
-            organization: supporterType === 'business' ? organization : '',
-            publicSupporter: supporterType === 'business' && publicSupporter,
-            updates,
-            attribution,
+        const stored = await recordFormSubmission(request, body.submissionId, body.turnstileToken, {
+            kind: 'petition',
+            data: {
+                supporterType, firstName, lastName, email, zip, organization: supporterType === 'business' ? organization : '',
+                authorized: supporterType === 'business' && authorized,
+                publicSupporter: supporterType === 'business' && publicSupporter,
+                updates, attribution,
+            },
         })
-        await sendResendEmail({ to: recipient, subject, text, html, replyTo: email })
-        // A failed acknowledgement must not turn an accepted signature into a
-        // retryable form error (which could generate duplicate submissions).
-        try {
-            await sendResendEvent('petition.submitted', email, {
-                first_name: firstName,
-                supporter_type: supporterType,
-                updates_opt_in: updates,
-            })
-        } catch (error) {
-            console.error('Petition acknowledgement event failed', error)
-        }
-        return NextResponse.json({ ok: true })
+        return NextResponse.json({ ok: true, duplicate: stored.duplicate })
     } catch (error) {
-        console.error('Petition submission failed', error)
+        if (error instanceof FormRequestError) {
+            return NextResponse.json({ error: error.message }, { status: error.status })
+        }
+        console.error('Petition record failed', error instanceof Error ? error.name : 'unknown')
         return NextResponse.json({ error: 'We could not record your support right now. Please try again.' }, { status: 503 })
     }
 }

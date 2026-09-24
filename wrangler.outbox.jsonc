@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "anne-arundel-to-go-form-outbox",
+  "main": "workers/form-outbox-worker.ts",
+  "compatibility_date": "2026-09-11",
+  "observability": { "enabled": true },
+  "triggers": { "crons": ["* * * * *"] },
+  "d1_databases": [{
+    "binding": "FORM_DB",
+    "database_name": "anne-arundel-to-go-forms",
+    "database_id": "81c6da8b-2286-41db-b6d0-2c8d11ab4d8d"
+  }],
+  "vars": {
+    "RESEND_FROM_EMAIL": "Anne Arundel To Go <hello@annearundeltogo.com>",
+    "PETITION_RECIPIENT_EMAIL": "hello@annearundeltogo.com",
+    "CONTACT_RECIPIENT_EMAIL": "hello@annearundeltogo.com",
+		"RESEND_PETITION_SEGMENT_ID": "7fb44c72-7761-46c3-87d0-109b40aa00b6",
+		"RESEND_UPDATES_SEGMENT_ID": "80ec53ce-33ed-46b4-835b-b02b1a533bf7",
+  }
+}

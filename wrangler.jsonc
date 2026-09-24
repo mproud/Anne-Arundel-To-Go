@@ -23,22 +23,36 @@
 		"enabled": true
 	},
 	"upload_source_maps": true,
-
 	// Disable preview URLs like <version>.<subdomain>.workers.dev
 	"preview_urls": false,
-
 	// Disable the default <name>.<subdomain>.workers.dev route
 	"workers_dev": false,
-
 	// Live domains
 	"routes": [
-		{ "pattern": "annearundeltogo.com", "custom_domain": true },
-		{ "pattern": "www.annearundeltogo.com", "custom_domain": true },
-		{ "pattern": "preview.annearundeltogo.com", "custom_domain": true }
+		{
+			"pattern": "annearundeltogo.com",
+			"custom_domain": true
+		},
+		{
+			"pattern": "www.annearundeltogo.com",
+			"custom_domain": true
+		},
+		{
+			"pattern": "preview.annearundeltogo.com",
+			"custom_domain": true
+		}
 	],
-
+	// D1 binding is REQUIRED. Replace the placeholder UUID before deployment.
+	"d1_databases": [
+		{
+			"binding": "anne_arundel_to_go_forms",
+			"database_name": "anne-arundel-to-go-forms",
+			"database_id": "81c6da8b-2286-41db-b6d0-2c8d11ab4d8d"
+		}
+	],
 	// Environment Vars
 	"vars": {
+		"TURNSTILE_SITE_KEY": "0x4AAAAAAFCjZZ6AytZ2ek8q",
 		"RESEND_FROM_EMAIL": "Anne Arundel To Go <hello@annearundeltogo.com>",
 		"RESEND_PETITION_SEGMENT_ID": "7fb44c72-7761-46c3-87d0-109b40aa00b6",
 		"RESEND_UPDATES_SEGMENT_ID": "80ec53ce-33ed-46b4-835b-b02b1a533bf7",

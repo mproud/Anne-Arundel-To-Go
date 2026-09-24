@@ -1,4 +1,5 @@
 import { getRuntimeEnv } from '@/lib/resend'
+import { shouldActivateNewOptIn } from './consent-decision'
 import { UTM_KEYS, sanitizeAttribution } from '@/lib/attribution'
 import type { Attribution } from '@/lib/attribution'
 
@@ -140,8 +141,12 @@ export async function savePetitionContact(contact: PetitionContact) {
     const previousProperties = existing.data?.properties
     const petitionCreated = previousProperties?.aa_created_no_updates?.value === 'yes'
     const previouslyOptedIn = Boolean(previousProperties?.aa_updates_opt_in_at?.value)
-    const activateNewOptIn = contact.updates && existing.data?.unsubscribed === true &&
-        petitionCreated && !previouslyOptedIn
+    const activateNewOptIn = shouldActivateNewOptIn({
+        checkedUpdates: contact.updates,
+        currentlyUnsubscribed: existing.data?.unsubscribed === true,
+        createdHereWithoutUpdates: petitionCreated,
+        previouslyOptedIn,
+    })
 
     await resendRequest<ContactResult>(contactPath, 'PATCH', {
         properties,

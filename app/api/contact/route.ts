@@ -1,15 +1,16 @@
 import { NextResponse } from 'next/server'
-import { escapeHtml, getRuntimeEnv, sendResendEmail } from '@/lib/resend'
-import { attributionRows, sanitizeAttribution } from '@/lib/attribution'
-import { prepareContactEventRecipient, sendResendEvent } from '@/lib/resend-events'
+import { sanitizeAttribution } from '@/lib/attribution'
+import { FormRequestError } from '@/lib/form-security'
+import { recordFormSubmission } from '@/lib/form-submissions'
 
 type ContactRequest = {
     reason?: unknown
     name?: unknown
     email?: unknown
     message?: unknown
-    updates?: unknown
     attribution?: unknown
+    submissionId?: unknown
+    turnstileToken?: unknown
 }
 
 const allowedReasons = new Set(['question', 'volunteer', 'other'])
@@ -21,9 +22,11 @@ function stringValue(value: unknown, maxLength: number) {
 
 export async function POST(request: Request) {
     let body: ContactRequest
-
     try {
-        body = (await request.json()) as ContactRequest
+        const raw = await request.text()
+        if (raw.length > 16_384) return NextResponse.json({ error: 'Submission is too large.' }, { status: 413 })
+        body = JSON.parse(raw) as ContactRequest
+        if (!body || typeof body !== 'object' || Array.isArray(body)) throw new Error('Invalid request.')
     } catch {
         return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
     }
@@ -32,68 +35,22 @@ export async function POST(request: Request) {
     const name = stringValue(body.name, 150)
     const email = stringValue(body.email, 254).toLowerCase()
     const message = stringValue(body.message, 5000)
-    const updates = body.updates === true
     const attribution = sanitizeAttribution(body.attribution)
 
     if (!allowedReasons.has(reason) || !name || !emailPattern.test(email) || !message) {
         return NextResponse.json({ error: 'Please complete all required fields with valid information.' }, { status: 400 })
     }
-
-    const reasonLabels: Record<string, string> = {
-        question: 'Question',
-        volunteer: 'Volunteer / help',
-        other: 'Other',
-    }
-    const reasonLabel = reasonLabels[reason]
-    const recipient = getRuntimeEnv('CONTACT_RECIPIENT_EMAIL') || getRuntimeEnv('RESEND_FROM_EMAIL') || 'hello@annearundeltogo.com'
-
-    const text = [
-        `Reason: ${reasonLabel}`,
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Opted into updates: ${updates ? 'Yes' : 'No'}`,
-        '',
-        'Message:',
-        message,
-        '',
-        ...attributionRows(attribution).map(([label, value]) => `${label}: ${value}`),
-    ].join('\n')
-
-    const html = `
-        <h2>New Anne Arundel To Go contact message</h2>
-        <p><strong>Reason:</strong> ${escapeHtml(reasonLabel)}</p>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Opted into updates:</strong> ${updates ? 'Yes' : 'No'}</p>
-        <hr />
-        <p>${escapeHtml(message).replaceAll('\n', '<br />')}</p>
-        <hr />
-        <h3>Attribution</h3>
-        <ul>${attributionRows(attribution).map(([label, value]) => `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</li>`).join('')}</ul>
-    `
-
     try {
-        await sendResendEmail({
-            to: recipient,
-            subject: `Website contact: ${reasonLabel} from ${name}`,
-            text,
-            html,
-            replyTo: email,
+        const stored = await recordFormSubmission(request, body.submissionId, body.turnstileToken, {
+            kind: 'contact',
+            data: { reason: reason as 'question' | 'volunteer' | 'other', name, email, message, attribution },
         })
-        // Contact messages do not grant permission for marketing updates.
-        // Record the event only after the notification has been accepted.
-        try {
-            await prepareContactEventRecipient(email)
-            await sendResendEvent('contact.submitted', email, {
-                first_name: name.split(/\s+/)[0] || name,
-                reason,
-            })
-        } catch (error) {
-            console.error('Contact acknowledgement event failed', error)
-        }
-        return NextResponse.json({ ok: true })
+        return NextResponse.json({ ok: true, duplicate: stored.duplicate })
     } catch (error) {
-        console.error('Contact submission failed', error)
+        if (error instanceof FormRequestError) {
+            return NextResponse.json({ error: error.message }, { status: error.status })
+        }
+        console.error('Contact record failed', error instanceof Error ? error.name : 'unknown')
         return NextResponse.json({ error: 'We could not send your message right now. Please try again.' }, { status: 503 })
     }
 }

@@ -17,6 +17,6 @@ Store `RESEND_API_KEY` as a Cloudflare secret, not as plaintext in `wrangler.jso
 
 The domain used in `RESEND_FROM_EMAIL` must be verified in Resend before production delivery will succeed.
 
-The counts shown in `lib/supporter-counts.ts` are **manual display figures**, not live Resend counts. Review the existing values before launch and update the module with verified totals. Email acceptance alone is not a durable signature database: for deduplication, official counts, retention, reporting and exports, add a persistent database or transactional outbox.
+The counts shown in `lib/supporter-counts.ts` are **manual display figures**, not live Resend counts. The D1 submission database and retryable outbox described in `FORM_HARDENING_SETUP.md` provide a durable record of submissions but do not automatically update these display figures or deduplicate people across different submission IDs.
 
 Configure a Cloudflare WAF/rate-limit rule for the two form endpoints before public launch. The email endpoints should not be left without abuse protections.

@@ -9,6 +9,7 @@ export type ResendMessage = {
     text: string
     html: string
     replyTo?: string
+    idempotencyKey?: string
 }
 
 export function getRuntimeEnv(name: string) {
@@ -37,6 +38,7 @@ export async function sendResendEmail(message: ResendMessage) {
         headers: {
             Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
+            ...(message.idempotencyKey ? { 'Idempotency-Key': message.idempotencyKey } : {}),
         },
         body: JSON.stringify({
             from,

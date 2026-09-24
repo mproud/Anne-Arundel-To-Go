@@ -10,12 +10,3 @@ CONTACT_RECIPIENT_EMAIL=hello@annearundeltogo.com
 
 npx wrangler secret put RESEND_API_KEY
 
-
-## To Do
-
-### global
-
-* [ ] OG description is too long
-
-
-* [ ] Apple share image?

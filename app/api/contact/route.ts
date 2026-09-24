@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { escapeHtml, getRuntimeEnv, sendResendEmail } from '@/lib/resend'
 import { attributionRows, sanitizeAttribution } from '@/lib/attribution'
+import { prepareContactEventRecipient, sendResendEvent } from '@/lib/resend-events'
 
 type ContactRequest = {
     reason?: unknown
@@ -79,6 +80,17 @@ export async function POST(request: Request) {
             html,
             replyTo: email,
         })
+        // Contact messages do not grant permission for marketing updates.
+        // Record the event only after the notification has been accepted.
+        try {
+            await prepareContactEventRecipient(email)
+            await sendResendEvent('contact.submitted', email, {
+                first_name: name.split(/\s+/)[0] || name,
+                reason,
+            })
+        } catch (error) {
+            console.error('Contact acknowledgement event failed', error)
+        }
         return NextResponse.json({ ok: true })
     } catch (error) {
         console.error('Contact submission failed', error)

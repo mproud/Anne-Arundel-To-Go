@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { escapeHtml, getRuntimeEnv, sendResendEmail } from '@/lib/resend'
 import { savePetitionContact } from '@/lib/resend-contacts'
+import { sendResendEvent } from '@/lib/resend-events'
 import { attributionRows, sanitizeAttribution } from '@/lib/attribution'
 
 type PetitionRequest = {
@@ -90,6 +91,17 @@ export async function POST(request: Request) {
             attribution,
         })
         await sendResendEmail({ to: recipient, subject, text, html, replyTo: email })
+        // A failed acknowledgement must not turn an accepted signature into a
+        // retryable form error (which could generate duplicate submissions).
+        try {
+            await sendResendEvent('petition.submitted', email, {
+                first_name: firstName,
+                supporter_type: supporterType,
+                updates_opt_in: updates,
+            })
+        } catch (error) {
+            console.error('Petition acknowledgement event failed', error)
+        }
         return NextResponse.json({ ok: true })
     } catch (error) {
         console.error('Petition submission failed', error)

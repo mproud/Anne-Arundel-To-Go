@@ -249,6 +249,20 @@ export default function PrivacyPage() {
                                 the information included in those submissions
                                 to deliver the messages.
                             </p>
+                            <p className="mt-3">
+                                We use Cloudflare Turnstile to protect our forms from automated
+                                abuse. Verification may run without displaying a widget. See
+                                Cloudflare&apos;s{' '}
+                                <a
+                                    href="https://www.cloudflare.com/turnstile-privacy-policy/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="font-medium text-primary underline underline-offset-2"
+                                >
+                                    Turnstile Privacy Addendum
+                                </a>
+                                {' '}for information about its security checks.
+                            </p>
                         </section>
 
                         <section>

@@ -1,11 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 type TurnstileAPI = {
     render: (element: HTMLElement, options: {
         sitekey: string
         action: 'petition' | 'contact'
+        appearance: 'interaction-only'
+        'refresh-expired': 'auto'
         callback: (token: string) => void
         'expired-callback': () => void
         'error-callback': () => void
@@ -41,12 +44,35 @@ export function TurnstileWidget({
     onTokenChange: (token: string) => void
     resetRef: { current: (() => void) | null }
 }) {
+    // Leave only an invisible anchor at the original JSX position. Mount the
+    // actual challenge immediately before this form's submit button using a
+    // React portal; neither petition nor contact form markup needs editing.
+    const anchor = useRef<HTMLSpanElement>(null)
+    const [mount, setMount] = useState<HTMLDivElement | null>(null)
     const container = useRef<HTMLDivElement>(null)
     const callbackRef = useRef(onTokenChange)
     const [error, setError] = useState<string | null>(null)
     callbackRef.current = onTokenChange
 
     useEffect(() => {
+        const form = anchor.current?.closest('form')
+        const button = form?.querySelector('button[type="submit"], input[type="submit"]')
+        if (!button) return
+
+        // Mount the portal before the submit button; retain the original form's
+        // spacing and permit Managed mode to show a challenge here when needed.
+        const host = document.createElement('div')
+        button.before(host)
+        setMount(host)
+        return () => {
+            // React removes the portaled children when the component unmounts.
+            host.remove()
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!mount) return
+
         let disposed = false
         let widgetId: string | undefined
         async function initialize() {
@@ -62,6 +88,10 @@ export function TurnstileWidget({
                 widgetId = api.render(container.current, {
                     sitekey: config.siteKey,
                     action,
+                    // Invisible mode is selected in Cloudflare for this sitekey.
+                    // For Managed mode, only display the widget if interaction is needed.
+                    appearance: 'interaction-only',
+                    'refresh-expired': 'auto',
                     callback: (token) => callbackRef.current(token),
                     'expired-callback': () => callbackRef.current(''),
                     'error-callback': () => callbackRef.current(''),
@@ -80,12 +110,18 @@ export function TurnstileWidget({
             resetRef.current = null
             if (widgetId) (window as TurnstileWindow).turnstile?.remove(widgetId)
         }
-    }, [action, resetRef])
+    }, [action, resetRef, mount])
 
     return (
-        <div>
-            <div ref={container} aria-label="Security check" />
-            {error && <p role="alert" className="mt-2 text-sm text-destructive">{error} Please reload the page.</p>}
-        </div>
+        <>
+            <span ref={anchor} hidden aria-hidden="true" />
+            {mount && createPortal(
+                <div>
+                    <div ref={container} aria-label="Security check" />
+                    {error && <p role="alert" className="mt-2 text-sm text-destructive">{error} Please reload the page.</p>}
+                </div>,
+                mount,
+            )}
+        </>
     )
 }

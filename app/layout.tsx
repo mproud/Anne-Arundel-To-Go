@@ -68,7 +68,6 @@ export const metadata: Metadata = {
                 url: SITE_OG_IMAGE,
                 width: 1200,
                 height: 630,
-                type: 'image/jpeg',
                 alt: 'Anne Arundel To Go - Let Anne Arundel Take It To-Go',
             },
         ],

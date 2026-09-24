@@ -117,7 +117,6 @@ export function PetitionSection() {
                                 <SupporterTypeOption
                                     value="individual"
                                     label="An individual"
-                                    description="Add my personal signature"
                                     icon={UserRound}
                                     selected={form.supporterType === 'individual'}
                                     onSelect={() => setSupporterType('individual')}
@@ -125,7 +124,6 @@ export function PetitionSection() {
                                 <SupporterTypeOption
                                     value="business"
                                     label="A business or organization"
-                                    description="Sign on behalf of a business"
                                     icon={Building2}
                                     selected={form.supporterType === 'business'}
                                     onSelect={() => setSupporterType('business')}
@@ -251,7 +249,7 @@ function SupporterTypeOption({
 }: {
     value: SupporterType
     label: string
-    description: string
+    description?: string
     icon: LucideIcon
     selected: boolean
     onSelect: () => void
@@ -275,7 +273,9 @@ function SupporterTypeOption({
             </span>
             <span>
                 <span className="block text-sm font-semibold text-md-black">{label}</span>
-                <span className="mt-0.5 block text-xs text-muted-foreground">{description}</span>
+                { description && (
+                    <span className="mt-0.5 block text-xs text-muted-foreground">{description}</span>
+                )}
             </span>
         </label>
     )

@@ -22,13 +22,6 @@ export default function PrivacyPage() {
 
                     <div className="prose-a:text-primary mt-10 space-y-8 text-base leading-relaxed text-foreground/85">
                         <section>
-                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">To Keep It Simple</h2>
-                            <p className="mt-3">
-                                Your information is yours, and stays yours. It's not getting shared or sold.
-                            </p>
-                        </section>
-
-                        <section>
                             <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">Petition submissions</h2>
                             <p className="mt-3">
                                 The petition collects the information shown on the form, including your name, email address, Zip code, 
@@ -51,9 +44,8 @@ export default function PrivacyPage() {
                             <p className="mt-3">
                                 Coalition updates are optional. The petition offers a separate updates checkbox, unchecked by default. 
                                 Contact messages do not opt you into updates. If you choose to subscribe to updates, you'll receive a handful 
-                                of messages at most to keep you updated as the bill progressses through the Maryland General Assembly. We don't 
-                                like spam either, so we'll keep it to a minimum. You can unsubscribe at any point by clicking the unsubscribe 
-                                link in the email.
+                                of messages at most to keep you updated as the bill progresses through the Maryland General Assembly. You can 
+                                unsubscribe at any point by clicking the unsubscribe  link in the email.
                             </p>
                         </section>
 

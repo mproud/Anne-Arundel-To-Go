@@ -53,15 +53,10 @@ export function SiteHeader() {
                     <a
                         href="/#petition"
                         className={buttonVariants({
-                            className: 'h-11 px-3 font-display text-xs font-bold uppercase tracking-wide sm:h-12 sm:px-6 sm:text-lg',
+                            className: 'h-11 px-5 md:px-3 font-display text-xs font-bold uppercase tracking-wide sm:h-12 sm:px-6 sm:text-lg',
                         })}
                     >
-                        <span className="sm:hidden">
-                            Sign petition
-                        </span>
-                        <span className="hidden sm:inline">
-                            Sign the Petition
-                        </span>
+                        Sign the Petition
                     </a>
                     <button
                         type="button"

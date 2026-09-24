@@ -22,7 +22,7 @@ const structuredData = {
             email: 'hello@annearundeltogo.com',
             logo: {
                 '@type': 'ImageObject',
-                url: `${SITE_URL}/images/anne-arundel-to-go-logo.png`,
+                url: `${SITE_URL}/images/anne-arundel-to-go-logo-white-background.png`,
             },
             description: SITE_DESCRIPTION,
             founder: {

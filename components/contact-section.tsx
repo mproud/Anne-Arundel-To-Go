@@ -142,9 +142,9 @@ export function ContactSection() {
                             <Button type="submit" size="lg" disabled={isSubmitting} className="h-12 w-full font-display text-base font-semibold uppercase tracking-wide">
                                 {isSubmitting ? 'Sending…' : submitLabels[reason]}
                             </Button>
-                            <p className="text-center text-xs text-muted-foreground">
+                            {/* <p className="text-center text-xs text-muted-foreground">
                                 See our <a href="/privacy" className="underline underline-offset-2 hover:text-primary">privacy notice</a>.
-                            </p>
+                            </p> */}
                         </form>
                     )}
                 </div>

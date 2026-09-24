@@ -47,9 +47,20 @@ export default function PrivacyPage() {
                             </p>
 
                             <p className="mt-3">
-                                We use this information to record and manage
-                                support for the coalition and to contact you
-                                about your submission if needed.
+                                We use this information to record and manage support for the petition, 
+                                verify submissions when necessary, and communicate with you about your 
+                                submission.
+                            </p>
+
+                            <p className="mt-3">
+                                We may share petition signatures and relevant information with members of the 
+                                Maryland General Assembly and their staff to demonstrate public support for 
+                                legislation allowing cocktails to go in Anne Arundel County and Annapolis. 
+                                We do not share your email address for this purpose.
+                            </p>
+
+                            <p className="mt-3">
+                                Individual petition signatures are not displayed publicly on this website.
                             </p>
 
                             <p className="mt-3">
@@ -63,6 +74,11 @@ export default function PrivacyPage() {
                                 keep those parameters during your visit and include them with your
                                 petition submission so we can understand where submissions come from.
                                 They may also be saved with your contact details in Resend.
+                            </p>
+
+                            <p className="mt-3">
+                                We do not sell your personal information or provide petition contact 
+                                information to third parties for their own marketing purposes.
                             </p>
                         </section>
 
@@ -97,6 +113,29 @@ export default function PrivacyPage() {
                                 in your message. We use that information to
                                 read and respond to your inquiry. We also record any campaign
                                 tracking parameters associated with your visit.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
+                                Information retention
+                            </h2>
+
+                            <p className="mt-3">
+                                We retain petition submissions and related contact information for as long as 
+                                reasonably necessary to operate the initiative, demonstrate public support for 
+                                the proposed legislation, and maintain accurate petition records.
+                            </p>
+
+                            <p className="mt-3">
+                                You may request the removal of your personal information from our records by 
+                                contacting{' '}
+                                <a
+                                    href="mailto:hello@annearundeltogo.com"
+                                    className="font-medium text-primary underline underline-offset-2"
+                                >
+                                    hello@annearundeltogo.com
+                                </a>, subject to any applicable legal or recordkeeping requirements.
                             </p>
                         </section>
 
@@ -215,10 +254,10 @@ export default function PrivacyPage() {
                             </h2>
 
                             <p className="mt-3">
-                                If you have a question about this notice,
-                                want to change your communication
-                                preferences, or have a question about
-                                information you&apos;ve submitted, email us at{' '}
+                                If you have questions about this privacy notice, want to update 
+                                your communication preferences, or would like to request access to, 
+                                correction of, or removal of personal information you have submitted, 
+                                please contact us at{' '}
                                 <a
                                     href="mailto:hello@annearundeltogo.com"
                                     className="font-medium text-primary underline underline-offset-2"
@@ -226,6 +265,11 @@ export default function PrivacyPage() {
                                     hello@annearundeltogo.com
                                 </a>
                                 .
+                            </p>
+
+                            <p className="mt-3">
+                                We will review and respond to requests in accordance with applicable 
+                                law and our recordkeeping obligations.
                             </p>
                         </section>
                     </div>

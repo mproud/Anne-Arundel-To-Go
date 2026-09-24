@@ -28,8 +28,13 @@ export function SiteFooter() {
                 </div>
 
                 <div className="mt-10 flex flex-col gap-2 border-t border-md-cream/15 pt-6 text-xs text-md-cream/50 sm:flex-row sm:items-center sm:justify-between">
-                    <p>&copy; {new Date().getFullYear()} Anne Arundel To Go</p>
-                    <p className="md:text-right">Not affiliated with any government agency or political campaign/organization.<br />Please drink responsibly.</p>
+                    <p>
+                        Anne Arundel To Go is an independent, community-led petition organized by Matt Proud to demonstrate public support 
+                        for allowing cocktails to go in Anne Arundel County. This initiative is not affiliated with any government agency 
+                        or political campaign. Signing the petition is voluntary and does not constitute an official vote.<br/>
+                        <br/>
+                        Please drink responsibly.
+                    </p>
                 </div>
             </div>
         </footer>

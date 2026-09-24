@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Building2, PenLine, UserRound, type LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { trackEvent } from './google-analytics'
 
 type SupporterType = 'individual' | 'business'
 
@@ -74,6 +75,11 @@ export function PetitionSection() {
             if (!response.ok) {
                 throw new Error(result?.error || 'We could not record your support. Please try again.')
             }
+
+            // Track the successful petition submission.
+            trackEvent('petition_submission', {
+                supporter_type: form.supporterType,
+            })
 
             router.push(`/thank-you?type=${form.supporterType}`)
         } catch (submissionError) {

@@ -32,6 +32,13 @@
 
 	// Live domains
 	"routes": [
+		{ "pattern": "annearundeltogo.com", "custom_domain": true },
+		{ "pattern": "www.annearundeltogo.com", "custom_domain": true },
 		{ "pattern": "preview.annearundeltogo.com", "custom_domain": true }
-	]
+	],
+
+	// Environment Vars
+	"vars": {
+		"RESEND_FROM_EMAIL": "Anne Arundel To Go <hello@annearundeltogo.com>",
+	},
 }

@@ -2,7 +2,7 @@
 
 ## Environment Vars
 
-RESEND_API_KEY=re_xxxxxxxxx
+RESEND_API_KEY=0000
 RESEND_FROM_EMAIL="Anne Arundel To Go <hello@annearundeltogo.com>"
 PETITION_RECIPIENT_EMAIL=hello@annearundeltogo.com
 CONTACT_RECIPIENT_EMAIL=hello@annearundeltogo.com

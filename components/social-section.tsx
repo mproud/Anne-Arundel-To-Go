@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 
 import { SITE_URL } from '@/lib/site'
+import { trackEvent } from './google-analytics'
 
 /* -------------------------------------------------------
    Social graphics
@@ -338,6 +339,11 @@ export function SocialSection() {
                         href={facebookUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => {
+                            trackEvent('social_share', {
+                                platform: 'facebook',
+                            })
+                        }}
                         className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#1877F2] px-6 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:opacity-90"
                     >
                         <FacebookIcon />

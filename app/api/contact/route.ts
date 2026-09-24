@@ -41,7 +41,7 @@ export async function POST(request: Request) {
         other: 'Other',
     }
     const reasonLabel = reasonLabels[reason]
-    const recipient = getRuntimeEnv('CONTACT_RECIPIENT_EMAIL') || 'hello@annearundeltogo.com'
+    const recipient = getRuntimeEnv('CONTACT_RECIPIENT_EMAIL') || getRuntimeEnv('RESEND_FROM_EMAIL') || 'hello@annearundeltogo.com'
 
     const text = [
         `Reason: ${reasonLabel}`,

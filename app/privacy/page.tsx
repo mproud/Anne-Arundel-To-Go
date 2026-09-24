@@ -4,7 +4,8 @@ import { SiteFooter } from '@/components/site-footer'
 
 export const metadata: Metadata = {
     title: 'Privacy',
-    description: 'How Anne Arundel To Go handles information submitted through the petition and contact forms.',
+    description:
+        'How Anne Arundel To Go handles petition submissions, contact messages, and website analytics.',
     alternates: { canonical: '/privacy' },
 }
 
@@ -12,57 +13,202 @@ export default function PrivacyPage() {
     return (
         <>
             <SiteHeader />
+
             <main id="main-content" className="bg-background">
                 <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
-                    <span className="text-sm font-semibold uppercase tracking-widest text-primary">Privacy</span>
-                    <h1 className="mt-3 font-display text-4xl font-bold uppercase tracking-tight text-md-black sm:text-5xl">Privacy notice</h1>
+                    <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+                        Privacy
+                    </span>
+
+                    <h1 className="mt-3 font-display text-4xl font-bold uppercase tracking-tight text-md-black sm:text-5xl">
+                        Privacy notice
+                    </h1>
+
                     <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-                        This notice explains how information submitted through Anne Arundel To Go is used.
+                        This notice explains what information we collect when
+                        you visit Anne Arundel To Go, sign the petition, or
+                        contact us.
                     </p>
 
-                    <div className="prose-a:text-primary mt-10 space-y-8 text-base leading-relaxed text-foreground/85">
+                    <div className="mt-10 space-y-8 text-base leading-relaxed text-foreground/85">
                         <section>
-                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">Petition submissions</h2>
+                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
+                                Petition submissions
+                            </h2>
+
                             <p className="mt-3">
-                                The petition collects the information shown on the form, including your name, email address, Zip code, 
-                                supporter type, and any business or organization information you provide. The information is sent to the 
-                                coalition so it can record and manage support for the initiative.
+                                When you sign the petition, we collect your
+                                name, email address, ZIP code, and whether
+                                you&apos;re signing as an individual or on behalf
+                                of a business or organization. If you sign for
+                                a business or organization, we also collect
+                                its name and the permissions you select on
+                                the form.
+                            </p>
+
+                            <p className="mt-3">
+                                We use this information to record and manage
+                                support for the coalition and to contact you
+                                about your submission if needed.
                             </p>
                         </section>
 
                         <section>
-                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">Public business supporters</h2>
+                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
+                                Public business supporters
+                            </h2>
+
                             <p className="mt-3">
-                                A business or organization may be listed publicly only when the person submitting the form selects the 
-                                public-supporter option. This site does not automatically publish petition submissions. Individual petition 
-                                signatures are not displayed publicly by this website.
+                                We may display the name of a business or
+                                organization on the website when its
+                                representative gives us permission to do so.
+                                Choosing to sign on behalf of an organization
+                                does not automatically give us permission to
+                                display its name publicly.
+                            </p>
+
+                            <p className="mt-3">
+                                Individual petition signatures are not
+                                displayed publicly on this website.
                             </p>
                         </section>
 
                         <section>
-                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">Updates</h2>
+                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
+                                Contact messages
+                            </h2>
+
                             <p className="mt-3">
-                                Coalition updates are optional. The petition offers a separate updates checkbox, unchecked by default. 
-                                Contact messages do not opt you into updates. If you choose to subscribe to updates, you'll receive a handful 
-                                of messages at most to keep you updated as the bill progresses through the Maryland General Assembly. You can 
-                                unsubscribe at any point by clicking the unsubscribe  link in the email.
+                                When you contact us, we collect your name,
+                                email address, and the information you include
+                                in your message. We use that information to
+                                read and respond to your inquiry.
                             </p>
                         </section>
 
                         <section>
-                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">Email delivery</h2>
+                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
+                                Coalition updates
+                            </h2>
+
                             <p className="mt-3">
-                                Petition and contact submissions are delivered to the coalition using Resend, an email delivery provider. 
-                                Information submitted through these forms is processed by Resend for the purpose of delivering 
-                                the message.
+                                You can choose to receive occasional updates
+                                when signing the petition. This is optional,
+                                and the checkbox is not selected by default.
+                                Sending us a contact message does not sign you
+                                up for updates.
+                            </p>
+
+                            <p className="mt-3">
+                                If you no longer want to receive updates,
+                                contact us at{' '}
+                                <a
+                                    href="mailto:hello@annearundeltogo.com"
+                                    className="font-medium text-primary underline underline-offset-2"
+                                >
+                                    hello@annearundeltogo.com
+                                </a>
+                                .
                             </p>
                         </section>
 
                         <section>
-                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">Questions</h2>
+                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
+                                Website analytics
+                            </h2>
+
                             <p className="mt-3">
-                                Questions about this notice can be sent to{' '}
-                                <a href="mailto:hello@annearundeltogo.com" className="font-medium text-primary underline underline-offset-2">
+                                We use Google Analytics to understand how
+                                people find and use this website. It helps us
+                                see which pages receive visitors, how people
+                                navigate the site, and whether features such
+                                as the petition and contact forms are being
+                                used.
+                            </p>
+
+                            <p className="mt-3">
+                                Google Analytics may collect information
+                                such as the pages you visit, the time of your
+                                visit, how you arrived at the site, your
+                                general geographic area, and information
+                                about your browser and device. It uses cookies
+                                and similar technologies to recognize visits
+                                and measure website activity.
+                            </p>
+
+                            <p className="mt-3">
+                                We may also measure actions such as successful
+                                petition submissions, contact form submissions,
+                                social-sharing clicks, and poster downloads.
+                                We do not intentionally send the names,
+                                email addresses, ZIP codes, organization
+                                names, or message contents entered into our
+                                forms to Google Analytics.
+                            </p>
+
+                            <p className="mt-3">
+                                Google processes analytics information on
+                                our behalf. To learn more about how Google
+                                collects and uses information from websites
+                                that use its services, visit{' '}
+                                <a
+                                    href="https://www.google.com/policies/privacy/partners/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="font-medium text-primary underline underline-offset-2"
+                                >
+                                    How Google uses information from sites
+                                    or apps that use its services
+                                </a>
+                                .
+                            </p>
+
+                            <p className="mt-3">
+                                You can control or delete cookies through
+                                your browser settings. Google also provides
+                                a{' '}
+                                <a
+                                    href="https://tools.google.com/dlpage/gaoptout"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="font-medium text-primary underline underline-offset-2"
+                                >
+                                    Google Analytics opt-out browser add-on
+                                </a>
+                                . Browser settings and opt-out tools may
+                                affect how Google Analytics measures your
+                                visit.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
+                                Email delivery
+                            </h2>
+
+                            <p className="mt-3">
+                                Petition submissions and contact messages
+                                are delivered to the coalition using Resend,
+                                an email delivery provider. Resend processes
+                                the information included in those submissions
+                                to deliver the messages.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-md-black">
+                                Questions
+                            </h2>
+
+                            <p className="mt-3">
+                                If you have a question about this notice,
+                                want to change your communication
+                                preferences, or have a question about
+                                information you&apos;ve submitted, email us at{' '}
+                                <a
+                                    href="mailto:hello@annearundeltogo.com"
+                                    className="font-medium text-primary underline underline-offset-2"
+                                >
                                     hello@annearundeltogo.com
                                 </a>
                                 .
@@ -71,6 +217,7 @@ export default function PrivacyPage() {
                     </div>
                 </article>
             </main>
+
             <SiteFooter />
         </>
     )

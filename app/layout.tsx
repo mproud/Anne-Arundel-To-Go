@@ -11,6 +11,7 @@ import {
 } from '@/lib/site'
 import './globals.css'
 import './accessibility.css'
+import { GoogleAnalytics } from '@/components/google-analytics'
 
 const publicSans = Public_Sans({
     subsets: ['latin'],
@@ -140,7 +141,10 @@ export default function RootLayout({
                 >
                     Skip to main content
                 </a>
+                
                 {children}
+
+                <GoogleAnalytics />
             </body>
         </html>
     )

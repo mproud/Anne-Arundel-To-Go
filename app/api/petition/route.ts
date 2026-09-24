@@ -47,7 +47,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'Business and organization supporters must provide an organization name and confirm authorization.' }, { status: 400 })
     }
 
-    const recipient = getRuntimeEnv('PETITION_RECIPIENT_EMAIL') || 'hello@annearundeltogo.com'
+    const recipient = getRuntimeEnv('PETITION_RECIPIENT_EMAIL') || getRuntimeEnv('RESEND_FROM_EMAIL') || 'hello@annearundeltogo.com'
     const supporterLabel = supporterType === 'business' ? 'Business / organization' : 'Individual'
     const subject = supporterType === 'business'
         ? `New organization supporter: ${organization}`

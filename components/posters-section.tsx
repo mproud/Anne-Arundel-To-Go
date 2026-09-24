@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Download } from 'lucide-react'
+import { trackEvent } from './google-analytics'
 
 // When the designer supplies a poster PNG, set its ready flag to true.
 // The card automatically switches from the shared preview image to the PNG.
@@ -64,6 +65,11 @@ export function PostersSection() {
                                     <a
                                         href={poster.src}
                                         download={poster.file}
+                                        onClick={() => {
+                                            trackEvent('poster_download', {
+                                                poster: poster.file,
+                                            })
+                                        }}
                                         className="mt-4 inline-flex h-11 items-center justify-center gap-2 rounded-md bg-md-black font-display text-sm font-semibold uppercase tracking-wide text-md-cream transition-colors hover:bg-primary"
                                     >
                                         <Download className="h-4 w-4" aria-hidden="true" />

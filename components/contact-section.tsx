@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { FlagStripe } from '@/components/flag-stripe'
 import { CheckCircle2, Mail } from 'lucide-react'
+import { trackEvent } from './google-analytics'
 
 type ContactReason = 'question' | 'volunteer' | 'other'
 
@@ -54,6 +55,11 @@ export function ContactSection() {
 
             const result = (await response.json().catch(() => null)) as { error?: string } | null
             if (!response.ok) throw new Error(result?.error || 'We could not send your message. Please try again.')
+
+            // Track the successful contact submission.
+            trackEvent('contact_submission', {
+                contact_reason: reason,
+            })
 
             setSubmitted(true)
         } catch (submissionError) {

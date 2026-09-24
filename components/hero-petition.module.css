@@ -1,0 +1,39 @@
+/** The existing petition form is displayed inside the hero; its business and
+ * individual fields, Turnstile, submission state and tracking remain unchanged. */
+.formColumn {
+    min-width: 0;
+    align-self: start;
+}
+
+.formColumn > :global(#petition) {
+    min-width: 0;
+    padding: 0;
+    background: transparent;
+    scroll-margin-top: 7rem;
+}
+
+/* Remove the standalone petition section's page-width, two-column wrapper. */
+.formColumn > :global(#petition) > div {
+    display: block;
+    max-width: none;
+    padding: 0;
+}
+
+/* Keep the petition's h2 available to assistive technology while avoiding a
+ * second visible introduction immediately beside the hero introduction. */
+.formColumn > :global(#petition) > div > div:first-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.formColumn > :global(#petition) > div > div:last-child {
+    width: 100%;
+    min-width: 0;
+}

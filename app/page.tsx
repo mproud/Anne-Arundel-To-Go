@@ -2,7 +2,6 @@ import { SiteHeader } from '@/components/site-header'
 import { Hero } from '@/components/hero'
 import { FactsSection } from '@/components/facts-section'
 import { AboutSection } from '@/components/about-section'
-import { PetitionSection } from '@/components/petition-section'
 import { SupportersSection } from '@/components/supporters-section'
 import { FaqSection } from '@/components/faq-section'
 import { PostersSection } from '@/components/posters-section'
@@ -67,7 +66,6 @@ export default function Page() {
             <main id="main-content">
                 <Hero />
                 <SupportersSection />
-                <PetitionSection />
                 <FactsSection />
                 <FaqSection />
                 <AboutSection />

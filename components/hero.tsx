@@ -1,4 +1,5 @@
-import Image from 'next/image'
+import { PetitionSection } from '@/components/petition-section'
+import styles from './hero-petition.module.css'
 import { buttonVariants } from '@/components/ui/button'
 import { FlagStripe } from '@/components/flag-stripe'
 import { PenLine } from 'lucide-react'
@@ -7,9 +8,9 @@ import { SUPPORTER_COUNTS } from '@/lib/supporter-counts'
 
 export function Hero() {
     return (
-        <section id="top" aria-labelledby="hero-heading" className="relative overflow-hidden bg-md-black text-md-cream">
-            <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-2 lg:py-24">
-                <div className="relative z-10">
+        <section id="top" aria-labelledby="hero-heading" className="relative bg-md-black text-md-cream">
+            <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:gap-12 lg:py-20">
+                <div className="relative z-10 lg:pt-7">
                     <h1 id="hero-heading" className="text-balance font-display text-5xl font-bold uppercase leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
                         Let Anne Arundel
                         <span className="mt-1 block text-secondary">Take it To-Go</span>
@@ -38,18 +39,8 @@ export function Hero() {
                     </div>
                 </div>
 
-                <div className="relative">
-                    <div className="relative overflow-hidden rounded-xl ring-1 ring-md-cream/15">
-                        <Image
-                            src="/images/orange-crush.png"
-                            alt="Orange crush cocktail in a clear glass with an orange garnish"
-                            width={720}
-                            height={720}
-                            priority
-                            sizes="(max-width: 1024px) 100vw, 50vw"
-                            className="h-full w-full object-cover"
-                        />
-                    </div>
+                <div className={styles.formColumn}>
+                    <PetitionSection />
                 </div>
             </div>
             <FlagStripe className="h-3" />

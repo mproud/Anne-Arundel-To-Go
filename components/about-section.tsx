@@ -2,19 +2,19 @@ import { Reveal } from '@/components/reveal'
 
 export function AboutSection() {
     return (
-        <section id="about" className="border-t border-border bg-muted py-20 sm:py-24">
+        <section id="about" className="bg-md-black py-20 text-md-cream sm:py-24">
             <div className="mx-auto max-w-5xl px-4 sm:px-6">
                 <Reveal>
                     <div className="mx-auto max-w-4xl">
-                        <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+                        <span className="text-sm font-semibold uppercase tracking-widest text-secondary">
                             Who We Are
                         </span>
 
-                        <h2 className="mt-3 text-balance font-display text-4xl font-bold uppercase tracking-tight text-md-black sm:text-5xl lg:text-6xl">
+                        <h2 className="mt-3 text-balance font-display text-4xl font-bold uppercase tracking-tight text-md-cream sm:text-5xl lg:text-6xl">
                             How This Got Started
                         </h2>
 
-                        <div className="mt-8 space-y-5 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                        <div className="mt-8 space-y-5 text-pretty text-lg leading-relaxed text-md-cream/80 sm:text-xl">
                             <p>
                                 My name is Matt Proud. I've lived and worked in Annapolis for more than 15 years,
                                 and like everyone else, I have my go-to places - El Toro Bravo, Boatyard, Adam's, 

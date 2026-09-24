@@ -1,5 +1,5 @@
 import { SiteHeader } from '@/components/site-header'
-import { Hero } from '@/components/hero'
+import { Hero } from '@/components/hero-editorial'
 import { FactsSection } from '@/components/facts-section-refined'
 import { AboutSection } from '@/components/about-section'
 import { SupportersSection } from '@/components/supporters-section'

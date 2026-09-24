@@ -1,0 +1,31 @@
+/* Keep the original charcoal hero; texture is confined to its copy side.
+ * The fine, low-opacity lines fade out before the petition card. */
+.hero {
+    background: var(--md-black);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(
+            135deg,
+            rgb(255 255 255 / 3.6%) 0,
+            rgb(255 255 255 / 3.6%) 1px,
+            transparent 1px,
+            transparent 30px
+        ),
+        radial-gradient(ellipse at 10% 30%, rgb(233 170 62 / 6%), transparent 60%);
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 18%, transparent 70%);
+    mask-image: linear-gradient(to right, #000 0%, #000 18%, transparent 70%);
+}
+
+@media (max-width: 639px) {
+    .hero::before {
+        -webkit-mask-image: linear-gradient(to bottom, #000, transparent 76%);
+        mask-image: linear-gradient(to bottom, #000, transparent 76%);
+    }
+}

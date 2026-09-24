@@ -1,0 +1,62 @@
+/** A branded typographic hero; no separate photo panel competing with the form. */
+.copy {
+    isolation: isolate;
+    min-width: 0;
+}
+
+/* A warm, edge-free wash gives the copy column depth without a visible card. */
+.copy::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    pointer-events: none;
+    inset: -4rem -1rem -2rem -3rem;
+    background:
+        radial-gradient(ellipse 80% 45% at 45% 21%, rgb(171 73 36 / 33%), transparent 100%),
+        radial-gradient(ellipse 55% 43% at 92% 79%, rgb(233 170 62 / 15%), transparent 100%);
+}
+
+.headlineAccent {
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.headlineAccent::after {
+    content: '';
+    display: block;
+    width: 37%;
+    height: 5px;
+    margin-top: 0.2em;
+    background: linear-gradient(to right, var(--md-red), var(--md-gold));
+}
+
+/* An understated citrus-rind motif is integrated into the background, not a
+ * picture/card below the text. Hide it on narrow screens to keep the form first. */
+.citrusMark {
+    display: none;
+    pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+    .citrusMark {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 17rem;
+        right: -0.5rem;
+        width: min(24rem, 77%);
+        aspect-ratio: 1;
+        border: 13px solid rgb(237 166 67 / 18%);
+        border-radius: 50%;
+        background: repeating-conic-gradient(
+            from 15deg,
+            rgb(245 177 76 / 14%) 0deg 2deg,
+            transparent 2deg 36deg
+        );
+        box-shadow: inset 0 0 0 12px rgb(237 166 67 / 8%);
+        opacity: 0.68;
+        -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 73%, transparent);
+        mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 73%, transparent);
+    }
+}
